@@ -111,7 +111,7 @@
 <meta property="og:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图Prometheus使用的是Pull模型，Prometheus Server通过HTTP的pull方式到各个目标拉取监控数据。  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ccnuo.com/images/prometheus/prometheus-architecture.png">
-<meta property="og:updated_time" content="2019-04-08T10:28:27.088Z">
+<meta property="og:updated_time" content="2019-04-08T14:21:26.090Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Prometheus之 理论基础（一）">
 <meta name="twitter:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图Prometheus使用的是Pull模型，Prometheus Server通过HTTP的pull方式到各个目标拉取监控数据。  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs">
@@ -386,7 +386,7 @@
                 
               
 
-              <time title="创建时间：2019-04-08 18:14:30 / 修改时间：18:28:27" itemprop="dateCreated datePublished" datetime="2019-04-08T18:14:30+08:00">2019-04-08</time>
+              <time title="创建时间：2019-04-08 18:14:30 / 修改时间：22:21:26" itemprop="dateCreated datePublished" datetime="2019-04-08T18:14:30+08:00">2019-04-08</time>
             
 
             
@@ -469,9 +469,11 @@
 <li>插件化</li>
 </ul>
 </li>
-<li>缺点</li>
+<li>缺点<ul>
 <li>Web 页面不友好</li>
 <li>不支持数据的图表显示</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>Zabbix<ul>
@@ -510,11 +512,23 @@
 </ul>
 </li>
 </ul>
-<h2 id="监控系统设计"><a href="#监控系统设计" class="headerlink" title="监控系统设计"></a>监控系统设计</h2><ul>
-<li>业务监控</li>
-<li>日志监控</li>
-<li>网络监控</li>
-<li>系统监控</li>
+<h2 id="监控维度"><a href="#监控维度" class="headerlink" title="监控维度"></a>监控维度</h2><ul>
+<li>业务监控<ul>
+<li>接口（注册、聊天、上传、下载、点击、搜索、充值……），日活，实时在线、QPS</li>
+</ul>
+</li>
+<li>日志监控<ul>
+<li>在日志层面，重头戏的无疑是ELK或是Splunk了。他们一般单独建设，采集各种类型的日志（应用，业务，用户行为，设备）</li>
+</ul>
+</li>
+<li>网络监控<ul>
+<li>对网络状态的监控(交换机，路由器，防火墙，VPN)。对任何规模的业务来说，网络监控工具都是一个重要的功能</li>
+</ul>
+</li>
+<li>系统监控<ul>
+<li>针对系统相关的基础项，如CPU、内存、硬盘、IO、TCP状态等</li>
+</ul>
+</li>
 </ul>
 
       
@@ -709,7 +723,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus监控架构图"><span class="nav-number">1.</span> <span class="nav-text">Prometheus监控架构图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开源监控工具的优缺点"><span class="nav-number">2.</span> <span class="nav-text">开源监控工具的优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#监控系统设计"><span class="nav-number">3.</span> <span class="nav-text">监控系统设计</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus监控架构图"><span class="nav-number">1.</span> <span class="nav-text">Prometheus监控架构图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开源监控工具的优缺点"><span class="nav-number">2.</span> <span class="nav-text">开源监控工具的优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#监控维度"><span class="nav-number">3.</span> <span class="nav-text">监控维度</span></a></li></ol></div>
             
 
           </div>
