@@ -105,15 +105,15 @@
 
   <meta name="description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图Prometheus使用的是Pull模型，Prometheus Server通过HTTP的pull方式到各个目标拉取监控数据。  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs">
 <meta property="og:type" content="article">
-<meta property="og:title" content="prometheus之 理论基础（一）">
+<meta property="og:title" content="Prometheus之 理论基础（一）">
 <meta property="og:url" content="https://ccnuo.com/2019/04/08/prometheus之 理论基础（一）/index.html">
 <meta property="og:site_name" content="Gino&#39;s Blog">
 <meta property="og:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图Prometheus使用的是Pull模型，Prometheus Server通过HTTP的pull方式到各个目标拉取监控数据。  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ccnuo.com/images/prometheus/prometheus-architecture.png">
-<meta property="og:updated_time" content="2019-04-08T10:16:42.081Z">
+<meta property="og:updated_time" content="2019-04-08T10:26:06.664Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="prometheus之 理论基础（一）">
+<meta name="twitter:title" content="Prometheus之 理论基础（一）">
 <meta name="twitter:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图Prometheus使用的是Pull模型，Prometheus Server通过HTTP的pull方式到各个目标拉取监控数据。  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs">
 <meta name="twitter:image" content="https://ccnuo.com/images/prometheus/prometheus-architecture.png">
 
@@ -132,7 +132,7 @@
   };
 </script>
 
-  <title>prometheus之 理论基础（一） | Gino's Blog</title>
+  <title>Prometheus之 理论基础（一） | Gino's Blog</title>
   
 
 
@@ -360,7 +360,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">prometheus之 理论基础（一）
+          <h1 class="post-title" itemprop="name headline">Prometheus之 理论基础（一）
 
               
             
@@ -386,7 +386,7 @@
                 
               
 
-              <time title="创建时间：2019-04-08 18:14:30 / 修改时间：18:16:42" itemprop="dateCreated datePublished" datetime="2019-04-08T18:14:30+08:00">2019-04-08</time>
+              <time title="创建时间：2019-04-08 18:14:30 / 修改时间：18:26:06" itemprop="dateCreated datePublished" datetime="2019-04-08T18:14:30+08:00">2019-04-08</time>
             
 
             
@@ -442,27 +442,37 @@
 <li>PromQL：是Prometheus的查询语句，利用PromQL可以和一些WEBUI(如Grafana)集成</li>
 <li>AlertManager：是一个独立于Prometheus的外部组件，用于监控系统的告警，通过配置文件可以配置一些告警规则，Prometheus会把告警推送到AlertManager。</li>
 </ul>
-<h2 id="开源监控工具的优缺点"><a href="#开源监控工具的优缺点" class="headerlink" title="开源监控工具的优缺点"></a>开源监控工具的优缺点</h2><h3 id="Nagios"><a href="#Nagios" class="headerlink" title="Nagios"></a>Nagios</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<h2 id="开源监控工具的优缺点"><a href="#开源监控工具的优缺点" class="headerlink" title="开源监控工具的优缺点"></a>开源监控工具的优缺点</h2><ul>
+<li>Nagios<ul>
+<li>优点<ul>
 <li>监控所有协议（HTTP, FTP, SSH, POP3, SMTP, SNMP, MySQL…）</li>
 <li>完全独立，没有依赖</li>
 <li>支持震荡检测</li>
 <li>插件化</li>
 </ul>
-<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+</li>
+<li>缺点</li>
 <li>Web 页面不友好</li>
 <li>不支持数据的图表显示</li>
 </ul>
-<h3 id="Zabbix"><a href="#Zabbix" class="headerlink" title="Zabbix"></a>Zabbix</h3><h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><ul>
+</li>
+<li>Zabbix<ul>
+<li>优点<ul>
 <li>监控所有协议（HTTP, FTP, SSH, POP3, SMTP, SNMP, MySQL…）</li>
 <li>Web 界面友好</li>
 <li>可以监控 Log 文件</li>
 <li>支持 Client agent ( Pull、Push model)</li>
 </ul>
-<h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><ul>
+</li>
+<li>缺点<ul>
 <li>配置比较复杂</li>
 <li>需要关系型数据库支持 ( mysql、PostgreSQL..）</li>
 </ul>
-<h3 id="Prometheus"><a href="#Prometheus" class="headerlink" title="Prometheus"></a>Prometheus</h3><h4 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h4><ul>
+</li>
+</ul>
+</li>
+<li>Prometheus<ul>
+<li>优点<ul>
 <li>使用 Go 编写，性能好</li>
 <li>多维数据模型（时序列数据由metric名和一组key/value组成）</li>
 <li>在多维度上灵活的查询语言(PromQl)</li>
@@ -473,9 +483,14 @@
 <li>多种可视化图表及仪表盘支持</li>
 <li>不需要安装代理，而且可以通过多个Prometheus实例来提取指标</li>
 </ul>
-<h4 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h4><ul>
+</li>
+<li>缺点<ul>
 <li>对使用者来说，所有的公制端点都必须是可达的，这意味着一个更加复杂的安全网络配置</li>
 <li>定制化监控时，编写PromQl较复杂</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <h2 id="监控系统设计"><a href="#监控系统设计" class="headerlink" title="监控系统设计"></a>监控系统设计</h2><ul>
 <li>业务监控</li>
@@ -676,7 +691,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus监控架构图"><span class="nav-number">1.</span> <span class="nav-text">Prometheus监控架构图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开源监控工具的优缺点"><span class="nav-number">2.</span> <span class="nav-text">开源监控工具的优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Nagios"><span class="nav-number">2.1.</span> <span class="nav-text">Nagios</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">2.1.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">2.1.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zabbix"><span class="nav-number">2.2.</span> <span class="nav-text">Zabbix</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Prometheus"><span class="nav-number">2.3.</span> <span class="nav-text">Prometheus</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点-2"><span class="nav-number">2.3.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点-2"><span class="nav-number">2.3.2.</span> <span class="nav-text">缺点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#监控系统设计"><span class="nav-number">3.</span> <span class="nav-text">监控系统设计</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus监控架构图"><span class="nav-number">1.</span> <span class="nav-text">Prometheus监控架构图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开源监控工具的优缺点"><span class="nav-number">2.</span> <span class="nav-text">开源监控工具的优缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#监控系统设计"><span class="nav-number">3.</span> <span class="nav-text">监控系统设计</span></a></li></ol></div>
             
 
           </div>
