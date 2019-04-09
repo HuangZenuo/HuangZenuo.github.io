@@ -111,7 +111,7 @@
 <meta property="og:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图Prometheus使用的是Pull模型，Prometheus Server通过HTTP的pull方式到各个目标拉取监控数据。  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ccnuo.com/images/prometheus/prometheus-architecture.png">
-<meta property="og:updated_time" content="2019-04-09T07:09:56.806Z">
+<meta property="og:updated_time" content="2019-04-09T08:17:33.329Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Prometheus之 基础理论（一）">
 <meta name="twitter:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图Prometheus使用的是Pull模型，Prometheus Server通过HTTP的pull方式到各个目标拉取监控数据。  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs">
@@ -403,7 +403,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-09 15:09:56" itemprop="dateModified" datetime="2019-04-09T15:09:56+08:00">2019-04-09</time>
+                <time title="修改时间：2019-04-09 16:17:33" itemprop="dateModified" datetime="2019-04-09T16:17:33+08:00">2019-04-09</time>
               
             
           </span>
@@ -449,7 +449,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.3k</span>
+                <span title="本文字数">1.8k</span>
               
 
               
@@ -463,7 +463,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -498,7 +498,7 @@
 </li>
 <li>Storage：即Prometheus的存储，利用Prometheus Server的本地存储</li>
 <li>PromQL：是Prometheus的查询语句，利用PromQL可以和一些WEBUI(如Grafana)集成</li>
-<li>AlertManager：是一个独立于Prometheus的外部组件，用于监控系统的告警，通过配置文件可以配置一些告警规则，Prometheus会把告警推送到AlertManager。</li>
+<li>AlertManager：独立于Prometheus的外部组件，用于监控系统的告警，通过配置文件可以配置一些告警规则，Prometheus会把告警推送到AlertManager，AlertManager按照告警配置处理告警内容，通过不同渠道将告警发送给不同责任人。</li>
 </ul>
 <h2 id="Prometheus的优缺点"><a href="#Prometheus的优缺点" class="headerlink" title="Prometheus的优缺点"></a>Prometheus的优缺点</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
 <li>使用 Go 编写，性能好</li>
@@ -525,6 +525,13 @@
 </ul>
 <h3 id="系统监控"><a href="#系统监控" class="headerlink" title="系统监控"></a>系统监控</h3><ul>
 <li>如CPU、内存、硬盘、IO、网络吞吐量、进程数量和状态等</li>
+</ul>
+<h2 id="Prometheus的存储方式"><a href="#Prometheus的存储方式" class="headerlink" title="Prometheus的存储方式"></a>Prometheus的存储方式</h2><ul>
+<li>prometheus采用的是time-series（时间序列）的方式以一种自定义的格式存储在本地硬盘上</li>
+<li>prometheus的本地T-S（time-series）数据库以每两小时为间隔来分block（块）存储，每一个块中又分为多个chunk文件，chunk文件是用来存放采集过来的数据的T-S数据，metadata和索引文件（index）</li>
+<li>index文件是对metrics（prometheus中一次K/V采集数据叫做一个metric）和labels（标签）进行索引之后存储在chunk中chunk是作为存储的基本单位，index and metadata是作为子集</li>
+<li>prometheus平时是将采集过来的数据先都存放在内存之中（prometheus对内存的消耗还是不小的）以类似缓存的方式用于加快搜索和访问</li>
+<li>当出现当机时，prometheus有一种保护机制叫做WAL可以讲数据定期存入硬盘中以chunk来表示，并在重新后动时用以恢复进入内存</li>
 </ul>
 
       
@@ -719,7 +726,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus监控架构图"><span class="nav-number">1.</span> <span class="nav-text">Prometheus监控架构图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的优缺点"><span class="nav-number">2.</span> <span class="nav-text">Prometheus的优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">2.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">2.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需要监控的种类"><span class="nav-number">3.</span> <span class="nav-text">需要监控的种类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#业务监控"><span class="nav-number">3.1.</span> <span class="nav-text">业务监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日志监控"><span class="nav-number">3.2.</span> <span class="nav-text">日志监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络监控"><span class="nav-number">3.3.</span> <span class="nav-text">网络监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统监控"><span class="nav-number">3.4.</span> <span class="nav-text">系统监控</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus监控架构图"><span class="nav-number">1.</span> <span class="nav-text">Prometheus监控架构图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的优缺点"><span class="nav-number">2.</span> <span class="nav-text">Prometheus的优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">2.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">2.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需要监控的种类"><span class="nav-number">3.</span> <span class="nav-text">需要监控的种类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#业务监控"><span class="nav-number">3.1.</span> <span class="nav-text">业务监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日志监控"><span class="nav-number">3.2.</span> <span class="nav-text">日志监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络监控"><span class="nav-number">3.3.</span> <span class="nav-text">网络监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统监控"><span class="nav-number">3.4.</span> <span class="nav-text">系统监控</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的存储方式"><span class="nav-number">4.</span> <span class="nav-text">Prometheus的存储方式</span></a></li></ol></div>
             
 
           </div>
@@ -770,7 +777,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">5 分钟</span>
+    <span title="站点阅读时长">6 分钟</span>
   
 </div>
 
