@@ -111,7 +111,7 @@
 <meta property="og:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图Prometheus使用的是Pull模型，Prometheus Server通过HTTP的pull方式到各个目标拉取监控数据。  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ccnuo.com/images/prometheus/prometheus-architecture.png">
-<meta property="og:updated_time" content="2019-04-09T10:31:08.984Z">
+<meta property="og:updated_time" content="2019-04-09T10:31:56.092Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Prometheus之 基础理论（一）">
 <meta name="twitter:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图Prometheus使用的是Pull模型，Prometheus Server通过HTTP的pull方式到各个目标拉取监控数据。  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs">
@@ -403,7 +403,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-09 18:31:08" itemprop="dateModified" datetime="2019-04-09T18:31:08+08:00">2019-04-09</time>
+                <time title="修改时间：2019-04-09 18:31:56" itemprop="dateModified" datetime="2019-04-09T18:31:56+08:00">2019-04-09</time>
               
             
           </span>
@@ -556,14 +556,12 @@
 </blockquote>
 <h4 id="既然有强大的Node-exporder为何要pushgateway"><a href="#既然有强大的Node-exporder为何要pushgateway" class="headerlink" title="既然有强大的Node_exporder为何要pushgateway"></a>既然有强大的Node_exporder为何要pushgateway</h4><blockquote>
 <p>既生瑜，何生亮？</p>
+</blockquote>
 <ul>
 <li>(1)exporter虽然采集的类型相当的丰富，但是依然有一些人为的特殊请求，非规则化的数据监控项目，需要定制化</li>
 <li>(2)exporter由于数据类型采集量大，但是大多数采集回来的数据我们实际上完全不会使用上，pushgateway实际上就是帮我们节省资源</li>
 <li>(3)一个新的自定义的pushgateway脚本开发快速易上手，而要二次开发exporder需要熟悉它的语言和大量的时间的去调试</li>
-<li>(4)pushgateway比较的灵活适合生产环境中的快速开发监控</li>
-</ul>
-</blockquote>
-<h4 id="pushgateway的优缺点"><a href="#pushgateway的优缺点" class="headerlink" title="pushgateway的优缺点"></a>pushgateway的优缺点</h4><ul>
+<li>(4)pushgateway比较的灵活适合生产环境中的快速开发监控<h4 id="pushgateway的优缺点"><a href="#pushgateway的优缺点" class="headerlink" title="pushgateway的优缺点"></a>pushgateway的优缺点</h4></li>
 <li>（1）pushgateway会形成一个单点瓶颈，假如好多个脚本同时发送给一个pushgateway的进程如果这个进程没了，那么监控数据也就没了</li>
 <li>（2）pushgateway并不能对发送过来的脚本采集数据进行更智能的判断假如脚本中间采集出问题了那么有问题的数据pushgateway一样照单全收发送给prometheus</li>
 </ul>
