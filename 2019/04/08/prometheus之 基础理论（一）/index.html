@@ -106,12 +106,12 @@
   <meta name="description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图Prometheus使用的是Pull模型，Prometheus Server通过HTTP的pull方式到各个目标拉取监控数据。  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Prometheus之 基础理论（一）">
-<meta property="og:url" content="https://ccnuo.com/2019/04/08/prometheus之 理论基础（一）/index.html">
+<meta property="og:url" content="https://ccnuo.com/2019/04/08/prometheus之 基础理论（一）/index.html">
 <meta property="og:site_name" content="Gino&#39;s Blog">
 <meta property="og:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图Prometheus使用的是Pull模型，Prometheus Server通过HTTP的pull方式到各个目标拉取监控数据。  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ccnuo.com/images/prometheus/prometheus-architecture.png">
-<meta property="og:updated_time" content="2019-04-09T03:55:43.895Z">
+<meta property="og:updated_time" content="2019-04-09T04:05:03.929Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Prometheus之 基础理论（一）">
 <meta name="twitter:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图Prometheus使用的是Pull模型，Prometheus Server通过HTTP的pull方式到各个目标拉取监控数据。  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs">
@@ -122,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="https://ccnuo.com/2019/04/08/prometheus之 理论基础（一）/">
+  <link rel="canonical" href="https://ccnuo.com/2019/04/08/prometheus之 基础理论（一）/">
 
 
 
@@ -343,7 +343,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ccnuo.com/2019/04/08/prometheus之 理论基础（一）/">
+    <link itemprop="mainEntityOfPage" href="https://ccnuo.com/2019/04/08/prometheus之 基础理论（一）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Gino">
@@ -403,7 +403,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-09 11:55:43" itemprop="dateModified" datetime="2019-04-09T11:55:43+08:00">2019-04-09</time>
+                <time title="修改时间：2019-04-09 12:05:03" itemprop="dateModified" datetime="2019-04-09T12:05:03+08:00">2019-04-09</time>
               
             
           </span>
@@ -449,7 +449,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.5k</span>
+                <span title="本文字数">1.6k</span>
               
 
               
@@ -514,7 +514,7 @@
 <li>监控所有协议（HTTP, FTP, SSH, POP3, SMTP, SNMP, MySQL…）</li>
 <li>Web 界面友好</li>
 <li>可以监控 Log 文件</li>
-<li>支持 Client agent ( Pull、Push model)</li>
+<li>支持 Client agent (Pull、Push model)</li>
 </ul>
 <h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><ul>
 <li>配置比较复杂</li>
@@ -535,23 +535,17 @@
 <li>对使用者来说，所有的公制端点都必须是可达的，这意味着一个更加复杂的安全网络配置</li>
 <li>定制化监控时，编写PromQl较复杂</li>
 </ul>
-<h2 id="监控维度"><a href="#监控维度" class="headerlink" title="监控维度"></a>监控维度</h2><ul>
-<li>业务监控<ul>
+<h2 id="需要监控的种类"><a href="#需要监控的种类" class="headerlink" title="需要监控的种类"></a>需要监控的种类</h2><h3 id="业务监控"><a href="#业务监控" class="headerlink" title="业务监控"></a>业务监控</h3><ul>
 <li>接口（注册、聊天、上传、下载、点击、搜索、充值……），日活，实时在线、QPS</li>
 </ul>
-</li>
-<li>日志监控<ul>
-<li>在日志层面，重头戏的无疑是ELK或是Splunk了。他们一般单独建设，采集各种类型的日志（应用，业务，用户行为，设备）</li>
+<h3 id="日志监控"><a href="#日志监控" class="headerlink" title="日志监控"></a>日志监控</h3><ul>
+<li>线上发布了服务，怎么知道它一切正常，比如发布5台服务器，如何直观了解是否有请求进来，访问一切正常呢？我们需要采集各种类型的日志（应用，业务，用户行为，设备），通常会单独建设一套ELK，将采集的工作交给它们，再由监控软件采集日志的错误率</li>
 </ul>
-</li>
-<li>网络监控<ul>
-<li>对网络状态的监控(交换机，路由器，防火墙，VPN)。对任何规模的业务来说，网络监控工具都是一个重要的功能</li>
+<h3 id="网络监控"><a href="#网络监控" class="headerlink" title="网络监控"></a>网络监控</h3><ul>
+<li>对网络设备的监控(交换机，路由器，防火墙，VPN)。对任何规模的业务来说，网络监控工具都是一个重要的功能</li>
 </ul>
-</li>
-<li>系统监控<ul>
-<li>针对系统相关的基础项，如CPU、内存、硬盘、IO、TCP状态等</li>
-</ul>
-</li>
+<h3 id="系统监控"><a href="#系统监控" class="headerlink" title="系统监控"></a>系统监控</h3><ul>
+<li>如CPU、内存、硬盘、IO、网络吞吐量、进程数量和状态等</li>
 </ul>
 
       
@@ -746,7 +740,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus监控架构图"><span class="nav-number">1.</span> <span class="nav-text">Prometheus监控架构图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开源监控工具的优缺点"><span class="nav-number">2.</span> <span class="nav-text">开源监控工具的优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Nagios"><span class="nav-number">2.1.</span> <span class="nav-text">Nagios</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">2.1.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">2.1.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zabbix"><span class="nav-number">2.2.</span> <span class="nav-text">Zabbix</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Prometheus"><span class="nav-number">2.3.</span> <span class="nav-text">Prometheus</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点-2"><span class="nav-number">2.3.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点-2"><span class="nav-number">2.3.2.</span> <span class="nav-text">缺点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#监控维度"><span class="nav-number">3.</span> <span class="nav-text">监控维度</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus监控架构图"><span class="nav-number">1.</span> <span class="nav-text">Prometheus监控架构图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开源监控工具的优缺点"><span class="nav-number">2.</span> <span class="nav-text">开源监控工具的优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Nagios"><span class="nav-number">2.1.</span> <span class="nav-text">Nagios</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">2.1.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">2.1.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Zabbix"><span class="nav-number">2.2.</span> <span class="nav-text">Zabbix</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Prometheus"><span class="nav-number">2.3.</span> <span class="nav-text">Prometheus</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点-2"><span class="nav-number">2.3.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点-2"><span class="nav-number">2.3.2.</span> <span class="nav-text">缺点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需要监控的种类"><span class="nav-number">3.</span> <span class="nav-text">需要监控的种类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#业务监控"><span class="nav-number">3.1.</span> <span class="nav-text">业务监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日志监控"><span class="nav-number">3.2.</span> <span class="nav-text">日志监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络监控"><span class="nav-number">3.3.</span> <span class="nav-text">网络监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统监控"><span class="nav-number">3.4.</span> <span class="nav-text">系统监控</span></a></li></ol></li></ol></div>
             
 
           </div>
