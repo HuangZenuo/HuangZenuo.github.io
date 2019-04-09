@@ -111,7 +111,7 @@
 <meta property="og:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图Prometheus使用的是Pull模型，Prometheus Server通过HTTP的pull方式到各个目标拉取监控数据。  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ccnuo.com/images/prometheus/prometheus-architecture.png">
-<meta property="og:updated_time" content="2019-04-09T04:05:03.929Z">
+<meta property="og:updated_time" content="2019-04-09T07:06:55.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Prometheus之 基础理论（一）">
 <meta name="twitter:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图Prometheus使用的是Pull模型，Prometheus Server通过HTTP的pull方式到各个目标拉取监控数据。  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs">
@@ -403,7 +403,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-09 12:05:03" itemprop="dateModified" datetime="2019-04-09T12:05:03+08:00">2019-04-09</time>
+                <time title="修改时间：2019-04-09 15:06:55" itemprop="dateModified" datetime="2019-04-09T15:06:55+08:00">2019-04-09</time>
               
             
           </span>
@@ -536,13 +536,13 @@
 <li>定制化监控时，编写PromQl较复杂</li>
 </ul>
 <h2 id="需要监控的种类"><a href="#需要监控的种类" class="headerlink" title="需要监控的种类"></a>需要监控的种类</h2><h3 id="业务监控"><a href="#业务监控" class="headerlink" title="业务监控"></a>业务监控</h3><ul>
-<li>接口（注册、聊天、上传、下载、点击、搜索、充值……），日活，实时在线、QPS</li>
+<li>接口（注册、聊天、上传、下载、点击、搜索、充值……），日活，实时在线、QPS。不过这些数据的阈值并不好确定。</li>
 </ul>
 <h3 id="日志监控"><a href="#日志监控" class="headerlink" title="日志监控"></a>日志监控</h3><ul>
 <li>线上发布了服务，怎么知道它一切正常，比如发布5台服务器，如何直观了解是否有请求进来，访问一切正常呢？我们需要采集各种类型的日志（应用，业务，用户行为，设备），通常会单独建设一套ELK，将采集的工作交给它们，再由监控软件采集日志的错误率</li>
 </ul>
 <h3 id="网络监控"><a href="#网络监控" class="headerlink" title="网络监控"></a>网络监控</h3><ul>
-<li>对网络设备的监控(交换机，路由器，防火墙，VPN)。对任何规模的业务来说，网络监控工具都是一个重要的功能</li>
+<li>对网络设备的监控(交换机，路由器等)。对任何规模的业务来说，网络监控工具都是一个重要的功能</li>
 </ul>
 <h3 id="系统监控"><a href="#系统监控" class="headerlink" title="系统监控"></a>系统监控</h3><ul>
 <li>如CPU、内存、硬盘、IO、网络吞吐量、进程数量和状态等</li>
