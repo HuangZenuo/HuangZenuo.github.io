@@ -111,7 +111,7 @@
 <meta property="og:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图Prometheus使用的是Pull模型，Prometheus Server通过HTTP的pull方式到各个目标拉取监控数据。  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ccnuo.com/images/prometheus/prometheus-architecture.png">
-<meta property="og:updated_time" content="2019-04-09T08:17:33.329Z">
+<meta property="og:updated_time" content="2019-04-09T09:33:44.508Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Prometheus之 基础理论（一）">
 <meta name="twitter:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图Prometheus使用的是Pull模型，Prometheus Server通过HTTP的pull方式到各个目标拉取监控数据。  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs">
@@ -403,7 +403,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-09 16:17:33" itemprop="dateModified" datetime="2019-04-09T16:17:33+08:00">2019-04-09</time>
+                <time title="修改时间：2019-04-09 17:33:44" itemprop="dateModified" datetime="2019-04-09T17:33:44+08:00">2019-04-09</time>
               
             
           </span>
@@ -449,7 +449,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.8k</span>
+                <span title="本文字数">2.3k</span>
               
 
               
@@ -531,7 +531,26 @@
 <li>prometheus的本地T-S（time-series）数据库以每两小时为间隔来分block（块）存储，每一个块中又分为多个chunk文件，chunk文件是用来存放采集过来的数据的T-S数据，metadata和索引文件（index）</li>
 <li>index文件是对metrics（prometheus中一次K/V采集数据叫做一个metric）和labels（标签）进行索引之后存储在chunk中chunk是作为存储的基本单位，index and metadata是作为子集</li>
 <li>prometheus平时是将采集过来的数据先都存放在内存之中（prometheus对内存的消耗还是不小的）以类似缓存的方式用于加快搜索和访问</li>
-<li>当出现当机时，prometheus有一种保护机制叫做WAL可以讲数据定期存入硬盘中以chunk来表示，并在重新后动时用以恢复进入内存</li>
+<li>当出现down机时，prometheus有一种保护机制叫做WAL可以讲数据定期存入硬盘中以chunk来表示，并在重新后动时用以恢复进入内存</li>
+</ul>
+<h2 id="Prometheus的采集方式"><a href="#Prometheus的采集方式" class="headerlink" title="Prometheus的采集方式"></a>Prometheus的采集方式</h2><ul>
+<li>consul主动在集群的内部获取集群服务器中的已经正常运行的服务</li>
+<li>采用HTTPpull/push两种对应的数据采集传输方式所有的数据采集都基本采用HTTP，而且分为pull/push推和拉两种方式去写采集程序方便</li>
+<li>主动模式：Prometheus主动去获取服务器上的具体监控项目</li>
+</ul>
+<h3 id="被动模式"><a href="#被动模式" class="headerlink" title="被动模式"></a>被动模式</h3><ul>
+<li>pull：指的是客户端（被监控机器）先安装各类已有exporters（由社区组织或企业开发的监控客户端插件）在系统上之后，exporters以守护进程的模式运行并开始采集数据exporter 本身也是一个http_server可以对http请求作出响应返回数据（K/V metrics）prometheus用pull 这种主动拉的方式（HTTP get）去访问每个节点上exporter并采样回需要的数据</li>
+</ul>
+<h3 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>监控数据的精细程度可以精确到1~5秒的采集精度</li>
+<li>周边的插件(exporter pushgateway)很丰富大多数的都不需要自己的开发</li>
+<li>本身基于数学计算模型，大量的实用函数可以实现很复杂的规则业务逻辑监控(如QPS的曲线弯曲下跌比例等模糊的概念)</li>
+<li>本身是开源的，更新速度，BUG修复快，支持N多语言做本身和插件的二次开发</li>
+</ul>
+<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>目前不支持集群,但是可以用通过其他方式实现</li>
+<li>学习成本大</li>
+<li>对磁盘的资源消耗大，具体看监控的集群量监控的数据量的大小</li>
 </ul>
 
       
@@ -726,7 +745,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus监控架构图"><span class="nav-number">1.</span> <span class="nav-text">Prometheus监控架构图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的优缺点"><span class="nav-number">2.</span> <span class="nav-text">Prometheus的优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">2.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">2.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需要监控的种类"><span class="nav-number">3.</span> <span class="nav-text">需要监控的种类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#业务监控"><span class="nav-number">3.1.</span> <span class="nav-text">业务监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日志监控"><span class="nav-number">3.2.</span> <span class="nav-text">日志监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络监控"><span class="nav-number">3.3.</span> <span class="nav-text">网络监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统监控"><span class="nav-number">3.4.</span> <span class="nav-text">系统监控</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的存储方式"><span class="nav-number">4.</span> <span class="nav-text">Prometheus的存储方式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus监控架构图"><span class="nav-number">1.</span> <span class="nav-text">Prometheus监控架构图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的优缺点"><span class="nav-number">2.</span> <span class="nav-text">Prometheus的优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">2.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">2.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需要监控的种类"><span class="nav-number">3.</span> <span class="nav-text">需要监控的种类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#业务监控"><span class="nav-number">3.1.</span> <span class="nav-text">业务监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日志监控"><span class="nav-number">3.2.</span> <span class="nav-text">日志监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络监控"><span class="nav-number">3.3.</span> <span class="nav-text">网络监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统监控"><span class="nav-number">3.4.</span> <span class="nav-text">系统监控</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的存储方式"><span class="nav-number">4.</span> <span class="nav-text">Prometheus的存储方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的采集方式"><span class="nav-number">5.</span> <span class="nav-text">Prometheus的采集方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#被动模式"><span class="nav-number">5.1.</span> <span class="nav-text">被动模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优点-1"><span class="nav-number">5.2.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点-1"><span class="nav-number">5.3.</span> <span class="nav-text">缺点</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -766,7 +785,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">6k</span>
+    <span title="站点总字数">7k</span>
   
 
   
