@@ -111,7 +111,7 @@
 <meta property="og:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图Prometheus使用的是Pull模型，Prometheus Server通过HTTP的pull方式到各个目标拉取监控数据。  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ccnuo.com/images/prometheus/prometheus-architecture.png">
-<meta property="og:updated_time" content="2019-04-09T10:09:55.055Z">
+<meta property="og:updated_time" content="2019-04-09T10:21:32.161Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Prometheus之 基础理论（一）">
 <meta name="twitter:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图Prometheus使用的是Pull模型，Prometheus Server通过HTTP的pull方式到各个目标拉取监控数据。  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs">
@@ -403,7 +403,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-09 18:09:55" itemprop="dateModified" datetime="2019-04-09T18:09:55+08:00">2019-04-09</time>
+                <time title="修改时间：2019-04-09 18:21:32" itemprop="dateModified" datetime="2019-04-09T18:21:32+08:00">2019-04-09</time>
               
             
           </span>
@@ -449,7 +449,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.5k</span>
+                <span title="本文字数">3k</span>
               
 
               
@@ -463,7 +463,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">3 分钟</span>
               
             </div>
           
@@ -538,9 +538,7 @@
 <li>采用HTTPpull/push两种对应的数据采集传输方式所有的数据采集都基本采用HTTP，而且分为pull/push推和拉两种方式去写采集程序方便</li>
 <li>主动模式：Prometheus主动去获取服务器上的具体监控项目</li>
 </ul>
-<h3 id="pull模式"><a href="#pull模式" class="headerlink" title="pull模式"></a>pull模式</h3><ul>
-<li>pull：指的是客户端（被监控机器）先安装各类已有exporters（由社区组织或企业开发的监控客户端插件）在系统上之后，exporters以守护进程的模式运行并开始采集数据exporter 本身也是一个http_server可以对http请求作出响应返回数据（K/V metrics）prometheus用pull 这种主动拉的方式（HTTP get）去访问每个节点上exporter并采样回需要的数据</li>
-</ul>
+<h3 id="被动模式"><a href="#被动模式" class="headerlink" title="被动模式"></a>被动模式</h3><p>pull：指的是客户端（被监控机器）先安装各类已有exporters（由社区组织或企业开发的监控客户端插件）在系统上之后，exporters以守护进程的模式运行并开始采集数据exporter 本身也是一个http_server可以对http请求作出响应返回数据（K/V metrics）prometheus用pull 这种主动拉的方式（HTTP get）去访问每个节点上exporter并采样回需要的数据</p>
 <h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><ul>
 <li>监控数据的精细程度可以精确到1~5秒的采集精度</li>
 <li>周边的插件(exporter pushgateway)很丰富大多数的都不需要自己的开发</li>
@@ -552,9 +550,23 @@
 <li>学习成本大</li>
 <li>对磁盘的资源消耗大，具体看监控的集群量监控的数据量的大小</li>
 </ul>
-<h3 id="pushgateway"><a href="#pushgateway" class="headerlink" title="pushgateway"></a>pushgateway</h3><blockquote>
-<p>exporter是⾸先安装在 被监控服务器上 运⾏在后台<br>然后⾃动采集系统数据，本身又是一个HTTP_Server可以被prometheus服务器定时去HTTP_GET取得数据<br>push的形式是把pushgateway安装在客户端或者服务端,运维通过自己写脚本抓取数据然后推送到pushgateway再由它推送到服务端上</p>
+<h3 id="pushgateway"><a href="#pushgateway" class="headerlink" title="pushgateway"></a>pushgateway</h3><p>exporter是⾸先安装在 被监控服务器上 运⾏在后台<br>然后⾃动采集系统数据，本身又是一个HTTP_Server可以被prometheus服务器定时去HTTP_GET取得数据<br>push的形式是把pushgateway安装在客户端或者服务端,运维通过自己写脚本抓取数据然后推送到pushgateway再由它推送到服务端上</p>
+<blockquote>
+<p>pushgateway本⾝也是⼀个 http服务器</p>
 </blockquote>
+<h4 id="既然有强大的Node-exporder为何要pushgateway"><a href="#既然有强大的Node-exporder为何要pushgateway" class="headerlink" title="既然有强大的Node_exporder为何要pushgateway"></a>既然有强大的Node_exporder为何要pushgateway</h4><blockquote>
+<p>既生瑜，何生亮？</p>
+<ul>
+<li>(1)exporter虽然采集的类型相当的丰富，但是依然有一些人为的特殊请求，非规则化的数据监控项目，需要定制化</li>
+<li>(2)exporter由于数据类型采集量大，但是大多数采集回来的数据我们实际上完全不会使用上，pushgateway实际上就是帮我们节省资源</li>
+<li>(3)一个新的自定义的pushgateway脚本开发快速易上手，而要二次开发exporder需要熟悉它的语言和大量的时间的去调试</li>
+<li>(4)pushgateway比较的灵活适合生产环境中的快速开发监控</li>
+</ul>
+</blockquote>
+<h4 id="pushgateway的优缺点"><a href="#pushgateway的优缺点" class="headerlink" title="pushgateway的优缺点"></a>pushgateway的优缺点</h4><ul>
+<li>（1）pushgateway会形成一个单点瓶颈，假如好多个脚本同时发送给一个pushgateway的进程如果这个进程没了，那么监控数据也就没了</li>
+<li>（2）pushgateway并不能对发送过来的脚本采集数据进行更智能的判断假如脚本中间采集出问题了那么有问题的数据pushgateway一样照单全收发送给prometheus</li>
+</ul>
 
       
     </div>
@@ -748,7 +760,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus监控架构图"><span class="nav-number">1.</span> <span class="nav-text">Prometheus监控架构图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的优缺点"><span class="nav-number">2.</span> <span class="nav-text">Prometheus的优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">2.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">2.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需要监控的种类"><span class="nav-number">3.</span> <span class="nav-text">需要监控的种类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#业务监控"><span class="nav-number">3.1.</span> <span class="nav-text">业务监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日志监控"><span class="nav-number">3.2.</span> <span class="nav-text">日志监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络监控"><span class="nav-number">3.3.</span> <span class="nav-text">网络监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统监控"><span class="nav-number">3.4.</span> <span class="nav-text">系统监控</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的存储方式"><span class="nav-number">4.</span> <span class="nav-text">Prometheus的存储方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的采集方式"><span class="nav-number">5.</span> <span class="nav-text">Prometheus的采集方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pull模式"><span class="nav-number">5.1.</span> <span class="nav-text">pull模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点-1"><span class="nav-number">5.1.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点-1"><span class="nav-number">5.1.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pushgateway"><span class="nav-number">5.2.</span> <span class="nav-text">pushgateway</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus监控架构图"><span class="nav-number">1.</span> <span class="nav-text">Prometheus监控架构图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的优缺点"><span class="nav-number">2.</span> <span class="nav-text">Prometheus的优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">2.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">2.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需要监控的种类"><span class="nav-number">3.</span> <span class="nav-text">需要监控的种类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#业务监控"><span class="nav-number">3.1.</span> <span class="nav-text">业务监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日志监控"><span class="nav-number">3.2.</span> <span class="nav-text">日志监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络监控"><span class="nav-number">3.3.</span> <span class="nav-text">网络监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统监控"><span class="nav-number">3.4.</span> <span class="nav-text">系统监控</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的存储方式"><span class="nav-number">4.</span> <span class="nav-text">Prometheus的存储方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的采集方式"><span class="nav-number">5.</span> <span class="nav-text">Prometheus的采集方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#被动模式"><span class="nav-number">5.1.</span> <span class="nav-text">被动模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点-1"><span class="nav-number">5.1.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点-1"><span class="nav-number">5.1.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pushgateway"><span class="nav-number">5.2.</span> <span class="nav-text">pushgateway</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#既然有强大的Node-exporder为何要pushgateway"><span class="nav-number">5.2.1.</span> <span class="nav-text">既然有强大的Node_exporder为何要pushgateway</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pushgateway的优缺点"><span class="nav-number">5.2.2.</span> <span class="nav-text">pushgateway的优缺点</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -799,7 +811,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">6 分钟</span>
+    <span title="站点阅读时长">7 分钟</span>
   
 </div>
 
