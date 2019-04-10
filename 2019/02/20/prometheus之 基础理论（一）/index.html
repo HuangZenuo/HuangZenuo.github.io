@@ -111,7 +111,9 @@
 <meta property="og:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs或Exporters中拉取监控数据。Exporter以Web API的形式对外暴露数据采集接口。 Prometheus Ser">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ccnuo.com/images/prometheus/prometheus-architecture.png">
-<meta property="og:updated_time" content="2019-04-10T02:24:09.292Z">
+<meta property="og:image" content="https://ccnuo.com/images/prometheus/load_average.png">
+<meta property="og:image" content="https://ccnuo.com/images/prometheus/http_requests_total.png">
+<meta property="og:updated_time" content="2019-04-10T11:38:19.949Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Prometheus之 基础理论（一）">
 <meta name="twitter:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs或Exporters中拉取监控数据。Exporter以Web API的形式对外暴露数据采集接口。 Prometheus Ser">
@@ -229,23 +231,6 @@
     
 
     <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
         
@@ -420,7 +405,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-10 10:24:09" itemprop="dateModified" datetime="2019-04-10T10:24:09+08:00">2019-04-10</time>
+                <time title="修改时间：2019-04-10 19:38:19" itemprop="dateModified" datetime="2019-04-10T19:38:19+08:00">2019-04-10</time>
               
             
           </span>
@@ -466,7 +451,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.3k</span>
+                <span title="本文字数">3.5k</span>
               
 
               
@@ -587,8 +572,14 @@
 <h2 id="Prometheus中metrics的概念"><a href="#Prometheus中metrics的概念" class="headerlink" title="Prometheus中metrics的概念"></a>Prometheus中metrics的概念</h2><blockquote>
 <p>在prometheus中，对于采集过来的数据，我们统一称作为metrics<br>metrics是对采样数据的总称，它并不代表某一种具体的数据格式，是一种对于度量计算单位的抽象</p>
 </blockquote>
-<h3 id="Gauges"><a href="#Gauges" class="headerlink" title="Gauges"></a>Gauges</h3><p>这一个最简单的度量标准，只有一个简单的返回值，或者叫瞬时状态。当需要监控硬盘或者内存的使用量，那么就应该使用Gauges的metrics格式来度量，因为硬盘的容量和内存的使用量是瞬间的，没有任何的规律，变化方式多种多样，而Gauges就是这种使用类型的代表</p>
-<h3 id="Counters"><a href="#Counters" class="headerlink" title="Counters"></a>Counters</h3><p>Counter就是计数器，从数据量0开始累积计算，在理想的状态下只能是永远的增长不会下降</p>
+<h3 id="Gauges"><a href="#Gauges" class="headerlink" title="Gauges"></a>Gauges</h3><p>这一个最简单的度量标准，只有一个简单的返回值，或者叫瞬时状态。当需要监控硬盘或者内存的使用量，那么就应该使用Gauges的metrics格式来度量，因为硬盘的容量和内存的使用量是瞬时的，没有任何的规律，变化方式多种多样，既不能肯定是持续增长，既不能肯定是持续下降。Gauges就是这种使用类型的代表</p>
+<blockquote>
+<p>收集系统负载<br><img src="/images/prometheus/load_average.png" alt="load_average"></p>
+</blockquote>
+<h3 id="Counters"><a href="#Counters" class="headerlink" title="Counters"></a>Counters</h3><p>Counter就是计数器，从数据量0开始累积计算，在理想的状态下，只能是永远的增长，非特殊情况不会下降<br>例如需要统计某一个时间段内http的总请求数，本周一达到了10000的请求数，下一周达到了20000，这里就需要用到counter。<br>这样下去，Counter的数据只可能是增加或是保持不变（例如不再有请求），理想状态下不可能出现降低的情况。<br>如果到了新的一年，我需要清空这些请求数，也就是上面说到的特殊情况下，那么这个Counter就会降为0</p>
+<blockquote>
+<p>收集http总请求数<br><img src="/images/prometheus/http_requests_total.png" alt="http_requests_total"></p>
+</blockquote>
 <h3 id="Histogram"><a href="#Histogram" class="headerlink" title="Histogram"></a>Histogram</h3><p>Histogram统计数据的分布情况，比如最小值，最大值，中间值，还有中位数，百分数值等，称为metrics中最难以理解的一种</p>
 
       
