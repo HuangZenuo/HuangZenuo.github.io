@@ -103,24 +103,28 @@
 
 
 
-  <meta name="description" content="内容待定…">
+  <meta name="description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs或Exporters中拉取监控数据。Exporter以Web API的形式对外暴露数据采集接口。 Prometheus Ser">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python基础">
-<meta property="og:url" content="https://ccnuo.com/2019/02/11/Python基础/index.html">
+<meta property="og:title" content="Prometheus之 基础理论（一）">
+<meta property="og:url" content="https://ccnuo.com/2019/02/20/prometheus之 基础理论（一）/index.html">
 <meta property="og:site_name" content="Gino&#39;s Blog">
-<meta property="og:description" content="内容待定…">
+<meta property="og:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs或Exporters中拉取监控数据。Exporter以Web API的形式对外暴露数据采集接口。 Prometheus Ser">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-15T12:26:23.829Z">
+<meta property="og:image" content="https://ccnuo.com/images/prometheus/prometheus-architecture.png">
+<meta property="og:image" content="https://ccnuo.com/images/prometheus/load_average.png">
+<meta property="og:image" content="https://ccnuo.com/images/prometheus/http_requests_total.png">
+<meta property="og:updated_time" content="2019-04-22T03:18:16.446Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python基础">
-<meta name="twitter:description" content="内容待定…">
+<meta name="twitter:title" content="Prometheus之 基础理论（一）">
+<meta name="twitter:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs或Exporters中拉取监控数据。Exporter以Web API的形式对外暴露数据采集接口。 Prometheus Ser">
+<meta name="twitter:image" content="https://ccnuo.com/images/prometheus/prometheus-architecture.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://ccnuo.com/2019/02/11/Python基础/">
+  <link rel="canonical" href="https://ccnuo.com/2019/02/20/prometheus之 基础理论（一）/">
 
 
 
@@ -130,7 +134,7 @@
   };
 </script>
 
-  <title>Python基础 | Gino's Blog</title>
+  <title>Prometheus之 基础理论（一） | Gino's Blog</title>
   
 
 
@@ -341,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ccnuo.com/2019/02/11/Python基础/">
+    <link itemprop="mainEntityOfPage" href="https://ccnuo.com/2019/02/20/prometheus之 基础理论（一）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Gino">
@@ -358,7 +362,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Python基础
+          <h1 class="post-title" itemprop="name headline">Prometheus之 基础理论（一）
 
               
             
@@ -384,7 +388,7 @@
                 
               
 
-              <time title="创建时间：2019-02-11 20:45:59" itemprop="dateCreated datePublished" datetime="2019-02-11T20:45:59+08:00">2019-02-11</time>
+              <time title="创建时间：2019-02-20 18:14:00" itemprop="dateCreated datePublished" datetime="2019-02-20T18:14:00+08:00">2019-02-20</time>
             
 
             
@@ -401,7 +405,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-15 20:26:23" itemprop="dateModified" datetime="2019-04-15T20:26:23+08:00">2019-04-15</time>
+                <time title="修改时间：2019-04-22 11:18:16" itemprop="dateModified" datetime="2019-04-22T11:18:16+08:00">2019-04-22</time>
               
             
           </span>
@@ -418,7 +422,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Prometheus/" itemprop="url" rel="index"><span itemprop="name">Prometheus</span></a></span>
 
                 
                 
@@ -447,7 +451,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">6</span>
+                <span title="本文字数">6.8k</span>
               
 
               
@@ -461,7 +465,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">6 分钟</span>
               
             </div>
           
@@ -481,7 +485,109 @@
       
 
       
-        <p>内容待定…</p>
+        <hr>
+<blockquote class="blockquote-center"><p>欢迎加入我的Python运维交流群：==&gt;<a href><font color="FF7F50">620331112</font></a>&lt;==</p>
+</blockquote>
+<hr>
+<h2 id="Prometheus监控架构图"><a href="#Prometheus监控架构图" class="headerlink" title="Prometheus监控架构图"></a>Prometheus监控架构图</h2><p><img src="/images/prometheus/prometheus-architecture.png" alt="prometheus-architecture"></p>
+<ul>
+<li>Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据<ul>
+<li>Jobs / Exporters：Prometheus可以从Jobs或Exporters中拉取监控数据。Exporter以Web API的形式对外暴露数据采集接口。</li>
+<li>Prometheus Server：Prometheus还可以从其他的Prometheus Server中拉取数据</li>
+<li>Pushgateway：对于一些以临时性Job运行的组件，Prometheus可能还没有来得及从中pull监控数据的情况下，这些Job已经结束了，Job运行时可以在运行时将监控数据推送到Pushgateway中，Prometheus从Pushgateway中拉取数据，防止监控数据丢失</li>
+<li>Service：是指Prometheus可以动态的发现一些服务，拉取数据进行监控，如从DNS，Kubernetes，Consul中发现</li>
+</ul>
+</li>
+<li>Storage：即Prometheus的存储，利用Prometheus Server的本地存储</li>
+<li>PromQL：是Prometheus的查询语句，利用PromQL可以和一些WEBUI(如Grafana)集成</li>
+<li>AlertManager：独立于Prometheus的外部组件，用于监控系统的告警，通过配置文件可以配置一些告警规则，Prometheus会把告警推送到AlertManager，AlertManager按照告警配置处理告警内容，通过不同渠道将告警发送给不同责任人。Prometheus本身并不具有发送告警功能</li>
+</ul>
+<h2 id="Prometheus的优点"><a href="#Prometheus的优点" class="headerlink" title="Prometheus的优点"></a>Prometheus的优点</h2><p>Prometheus是一个开源的完整监控解决方案，其对传统监控系统的测试和告警模型进行了彻底的颠覆，形成了基于中央化的规则计算、统一分析和告警的新模型。 相比于传统监控系统Prometheus具有以下优点：</p>
+<h3 id="易于管理"><a href="#易于管理" class="headerlink" title="易于管理"></a>易于管理</h3><p>Prometheus核心部分只有一个单独的二进制文件，不存在任何的第三方依赖(数据库，缓存等等)。唯一需要的就是本地磁盘，因此不会有潜在级联故障的风险。<br>Prometheus基于Pull模型的架构方式，可以在任何地方（本地电脑，开发环境，测试环境）搭建我们的监控系统。对于一些复杂的情况，还可以使用Prometheus服务发现(Service Discovery)的能力动态管理监控目标。</p>
+<h3 id="监控服务的内部运行状态"><a href="#监控服务的内部运行状态" class="headerlink" title="监控服务的内部运行状态"></a>监控服务的内部运行状态</h3><p>Pometheus鼓励用户监控服务的内部状态，基于Prometheus丰富的Client库，用户可以轻松的在应用程序中添加对Prometheus的支持，从而让用户可以获取服务和应用内部真正的运行状态。</p>
+<h3 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h3><p>Prometheus Server中自带了一个Prometheus UI，通过这个UI可以方便地直接对数据进行查询，并且支持直接以图形化的形式展示数据。同时Prometheus还提供了一个独立的基于Ruby On Rails的Dashboard解决方案Promdash。最新的Grafana可视化工具也已经提供了完整的Prometheus支持，基于Grafana可以创建更加精美的监控图标。基于Prometheus提供的API还可以实现自己的监控可视化UI。</p>
+<h3 id="强大的查询语言PromQL"><a href="#强大的查询语言PromQL" class="headerlink" title="强大的查询语言PromQL"></a>强大的查询语言PromQL</h3><p>Prometheus内置了一个强大的数据查询语言PromQL。 通过PromQL可以实现对监控数据的查询、聚合。同时PromQL也被应用于数据可视化(如Grafana)以及告警当中。<br>通过PromQL可以轻松回答类似于以下问题：</p>
+<ul>
+<li>在过去一段时间中95%应用延迟时间的分布范围？</li>
+<li>预测在4小时后，磁盘空间占用大致会是什么情况？</li>
+<li>CPU占用率前5位的服务有哪些？(过滤)</li>
+</ul>
+<h3 id="高效"><a href="#高效" class="headerlink" title="高效"></a>高效</h3><p>对于监控系统而言，大量的监控任务必然导致有大量的数据产生。而Prometheus可以高效地处理这些数据，对于单一Prometheus Server实例而言它可以处理：</p>
+<ul>
+<li>数以百万的监控指标</li>
+<li>每秒处理数十万的数据点。</li>
+</ul>
+<h2 id="需要监控的种类"><a href="#需要监控的种类" class="headerlink" title="需要监控的种类"></a>需要监控的种类</h2><h3 id="业务监控"><a href="#业务监控" class="headerlink" title="业务监控"></a>业务监控</h3><ul>
+<li>接口（注册、聊天、上传、下载、点击、搜索、充值……），日活，实时在线、QPS。不过这些数据的阈值并不好确定。</li>
+</ul>
+<h3 id="日志监控"><a href="#日志监控" class="headerlink" title="日志监控"></a>日志监控</h3><ul>
+<li>线上发布了服务，怎么知道它一切正常，比如发布5台服务器，如何直观了解是否有请求进来，访问一切正常呢？我们需要采集各种类型的日志（应用，业务，用户行为，设备），通常会单独建设一套ELK，将采集的工作交给它们，再由监控软件采集日志的错误率</li>
+</ul>
+<h3 id="网络监控"><a href="#网络监控" class="headerlink" title="网络监控"></a>网络监控</h3><ul>
+<li>对网络设备的监控(交换机，路由器等)。对任何规模的业务来说，网络监控工具都是一个重要的功能</li>
+</ul>
+<h3 id="系统监控"><a href="#系统监控" class="headerlink" title="系统监控"></a>系统监控</h3><ul>
+<li>如CPU、内存、硬盘、IO、网络吞吐量、进程数量和状态等</li>
+</ul>
+<h2 id="Prometheus的采集方式"><a href="#Prometheus的采集方式" class="headerlink" title="Prometheus的采集方式"></a>Prometheus的采集方式</h2><ul>
+<li>consul主动在集群的内部获取集群服务器中的已经正常运行的服务</li>
+<li>采用HTTPpull/push两种对应的数据采集传输方式所有的数据采集都基本采用HTTP，而且分为pull/push推和拉两种方式去写采集程序方便</li>
+<li>主动模式：Prometheus主动去获取服务器上的具体监控项目</li>
+</ul>
+<h3 id="被动模式"><a href="#被动模式" class="headerlink" title="被动模式"></a>被动模式</h3><p>pull：指的是客户端（被监控机器）先安装各类已有exporters（由社区组织或企业开发的监控客户端插件）在系统上之后，exporters以守护进程的模式运行并开始采集数据exporter 本身也是一个http_server可以对http请求作出响应返回数据（K/V metrics）prometheus用pull 这种主动拉的方式（HTTP get）去访问每个节点上exporter并采样回需要的数据</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>监控数据的精细程度可以精确到1~5秒的采集精度</li>
+<li>周边的插件(exporter pushgateway)很丰富大多数的都不需要自己的开发</li>
+<li>本身基于数学计算模型，大量的实用函数可以实现很复杂的规则业务逻辑监控(如QPS的曲线弯曲下跌比例等模糊的概念)</li>
+<li>本身是开源的，更新速度，BUG修复快，支持N多语言做本身和插件的二次开发</li>
+</ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>目前不支持集群,但是可以用通过其他方式实现</li>
+<li>学习成本大</li>
+<li>对磁盘的资源消耗大，具体看监控的集群量监控的数据量的大小</li>
+</ul>
+<h3 id="pushgateway模式"><a href="#pushgateway模式" class="headerlink" title="pushgateway模式"></a>pushgateway模式</h3><p>exporter是⾸先安装在 被监控服务器上 运⾏在后台<br>然后⾃动采集系统数据，本身又是一个HTTP_Server可以被prometheus服务器定时去HTTP_GET取得数据<br>push的形式是把pushgateway安装在客户端或者服务端,运维通过自己写脚本抓取数据然后推送到pushgateway再由它推送到服务端上</p>
+<blockquote>
+<p>pushgateway本⾝也是⼀个 http服务器</p>
+</blockquote>
+<h4 id="pushgateway的优缺点"><a href="#pushgateway的优缺点" class="headerlink" title="pushgateway的优缺点"></a>pushgateway的优缺点</h4><ul>
+<li>（1）pushgateway会形成一个单点瓶颈，假如好多个脚本同时发送给一个pushgateway的进程如果这个进程没了，那么监控数据也就没了</li>
+<li>（2）pushgateway并不能对发送过来的脚本采集数据进行更智能的判断假如脚本中间采集出问题了那么有问题的数据pushgateway一样照单全收发送给prometheus</li>
+</ul>
+<h3 id="既然有强大的Node-exporter为何要pushgateway"><a href="#既然有强大的Node-exporter为何要pushgateway" class="headerlink" title="既然有强大的Node_exporter为何要pushgateway"></a>既然有强大的Node_exporter为何要pushgateway</h3><blockquote>
+<p>既生瑜，何生亮？</p>
+</blockquote>
+<ul>
+<li>（1）exporter虽然采集的类型相当的丰富，但是依然有一些人为的特殊请求，非规则化的数据监控项目，需要定制化</li>
+<li>（2）exporter由于数据类型采集量大，但是大多数采集回来的数据我们实际上完全不会使用上，pushgateway实际上就是帮我们节省资源</li>
+<li>（3）一个新的自定义的pushgateway脚本开发快速易上手，而要二次开发exporter需要熟悉它的语言和大量的时间的去调试</li>
+<li>（4）pushgateway比较的灵活适合生产环境中的快速开发监控</li>
+</ul>
+<h2 id="Prometheus的存储方式"><a href="#Prometheus的存储方式" class="headerlink" title="Prometheus的存储方式"></a>Prometheus的存储方式</h2><ul>
+<li>prometheus采用的是time-series（时间序列）的方式以一种自定义的格式存储在本地硬盘上</li>
+<li>prometheus的本地T-S（time-series）数据库以每两小时为间隔来分block（块）存储，每一个块中又分为多个chunk文件，chunk文件是用来存放采集过来的数据的T-S数据，metadata和索引文件（index）</li>
+<li>index文件是对metrics（prometheus中一次K/V采集数据叫做一个metric）和labels（标签）进行索引之后存储在chunk中chunk是作为存储的基本单位，index and metadata是作为子集</li>
+<li>prometheus平时是将采集过来的数据先都存放在内存之中（prometheus对内存的消耗还是不小的）以类似缓存的方式用于加快搜索和访问</li>
+<li>当出现down机时，prometheus有一种保护机制叫做WAL可以讲数据定期存入硬盘中以chunk来表示，并在重新后动时用以恢复进入内存</li>
+</ul>
+<h2 id="Prometheus中metrics的概念"><a href="#Prometheus中metrics的概念" class="headerlink" title="Prometheus中metrics的概念"></a>Prometheus中metrics的概念</h2><blockquote>
+<p>在prometheus中，对于采集过来的数据，我们统一称作为metrics<br>metrics是对采样数据的总称，它并不代表某一种具体的数据格式，是一种对于度量计算单位的抽象</p>
+</blockquote>
+<h3 id="Gauges"><a href="#Gauges" class="headerlink" title="Gauges"></a>Gauges</h3><p>这一个最简单的度量标准，只有一个简单的返回值，或者叫瞬时状态。当需要监控硬盘或者内存的使用量，那么就应该使用Gauges的metrics格式来度量，因为硬盘的容量和内存的使用量是瞬时的，没有任何的规律，变化方式多种多样，既不能肯定是持续增长，既不能肯定是持续下降。Gauges就是这种使用类型的代表</p>
+<blockquote>
+<p>收集系统负载<br><img src="/images/prometheus/load_average.png" alt="load_average"></p>
+</blockquote>
+<h3 id="Counters"><a href="#Counters" class="headerlink" title="Counters"></a>Counters</h3><p>Counter就是计数器，从数据量0开始累积计算，在理想的状态下，只能是永远的增长，在非特殊情况，不会下降<br>例如需要统计某一个时间段内http的总请求数，本周达到了10000的请求数，下周达到了15000。这样下去，Counter的数据只可能是增加或是保持不变（例如不再有请求），理想状态下不可能出现降低的情况。<br>如果到了新的一年，需要清空这些请求数，也就是上面说到的特殊情况下，那么这个Counter就会被降为0</p>
+<blockquote>
+<p>收集http总请求数<br><img src="/images/prometheus/http_requests_total.png" alt="http_requests_total"></p>
+</blockquote>
+<h3 id="Histogram"><a href="#Histogram" class="headerlink" title="Histogram"></a>Histogram</h3><p>Histogram统计数据的分布情况，比如最小值，最大值，中间值，还有中位数，百分数值等，常用于跟踪事件发生(通常是请求持续时间或响应大小)的规模，例如响应时间小于500毫秒的多少次、500毫秒~1000毫秒之间多少次、1000毫秒以上的多少次。它特别之处是可以对记录的内容进行分组。<br>Histogram指标直接反应了在不同区间内样本的个数，标签le定义了分布桶Bucket的边界，sum是所有数据的和，count是数据个数<br>这里以Prometheus自身的监控指标prometheus_tsdb_compaction_duration为例，该监控指标记录了Prometheus进行数据压缩任务的运行耗时的分布统计情况。如下所示，是Prometheus返回的样本数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># HELP prometheus_tsdb_compaction_duration Duration of compaction runs.</span><br><span class="line"># TYPE prometheus_tsdb_compaction_duration histogram</span><br><span class="line">prometheus_tsdb_compaction_duration_bucket&#123;le=&quot;1&quot;&#125; 2</span><br><span class="line">prometheus_tsdb_compaction_duration_bucket&#123;le=&quot;2&quot;&#125; 36</span><br><span class="line">prometheus_tsdb_compaction_duration_bucket&#123;le=&quot;4&quot;&#125; 36</span><br><span class="line">prometheus_tsdb_compaction_duration_bucket&#123;le=&quot;8&quot;&#125; 36</span><br><span class="line">prometheus_tsdb_compaction_duration_bucket&#123;le=&quot;16&quot;&#125; 36</span><br><span class="line">prometheus_tsdb_compaction_duration_bucket&#123;le=&quot;32&quot;&#125; 36</span><br><span class="line">prometheus_tsdb_compaction_duration_bucket&#123;le=&quot;64&quot;&#125; 36</span><br><span class="line">prometheus_tsdb_compaction_duration_bucket&#123;le=&quot;128&quot;&#125; 36</span><br><span class="line">prometheus_tsdb_compaction_duration_bucket&#123;le=&quot;256&quot;&#125; 36</span><br><span class="line">prometheus_tsdb_compaction_duration_bucket&#123;le=&quot;512&quot;&#125; 36</span><br><span class="line">prometheus_tsdb_compaction_duration_bucket&#123;le=&quot;+Inf&quot;&#125; 36</span><br><span class="line">prometheus_tsdb_compaction_duration_sum 51.31017077500001</span><br><span class="line">prometheus_tsdb_compaction_duration_count 36</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>如上所示，表示当前Promtheus共进行了36次数据压缩，总耗时为51.31017077500001ms。其中任务耗时在0~1ms区间内的为2次、在0~2ms区间范围内为36次，以此类推。</p>
+</blockquote>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>Summary和Histogram十分相似，常用于跟踪事件(通常是要求持续时间和响应大小)发生的规模，例如：请求耗时、响应大小。同样提供 count 和 sum 全部值的功能。但支持按百分比跟踪结果。它直接存储了 quantile 数据，而不是根据统计区间计算出来的<br>例：指标prometheus_tsdb_wal_fsync_duration_seconds的指标类型为Summary。 它记录了Prometheus Server中wal_fsync处理的处理时间，通过访问Prometheus Server的/metrics地址，可以获取到以下监控样本数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># HELP prometheus_tsdb_wal_fsync_duration_seconds Duration of WAL fsync.</span><br><span class="line"># TYPE prometheus_tsdb_wal_fsync_duration_seconds summary</span><br><span class="line">prometheus_tsdb_wal_fsync_duration_seconds&#123;quantile=&quot;0.5&quot;&#125; 0.012352463</span><br><span class="line">prometheus_tsdb_wal_fsync_duration_seconds&#123;quantile=&quot;0.9&quot;&#125; 0.014458005</span><br><span class="line">prometheus_tsdb_wal_fsync_duration_seconds&#123;quantile=&quot;0.99&quot;&#125; 0.017316173</span><br><span class="line">prometheus_tsdb_wal_fsync_duration_seconds_sum 2.888716127000002</span><br><span class="line">prometheus_tsdb_wal_fsync_duration_seconds_count 216</span><br></pre></td></tr></table></figure></p>
+<p>从上面的样本中可以得知当前Prometheus Server进行wal_fsync操作的总次数为216次，耗时2.888716127000002s。其中中位数（比如quantile=0.5对应的是数据集中小于其占比为50%的值）的耗时为0.012352463，9分位数（quantile=0.9）的耗时为0.014458005s</p>
+<h3 id="Histogram-vs-Summary"><a href="#Histogram-vs-Summary" class="headerlink" title="Histogram vs Summary"></a>Histogram vs Summary</h3><p>它们都包含sum和count。<br>Histogram通过histogram_quantile函数在服务器端计算的分位数。而Sumamry的分位数则是直接在客户端计算完成。因此对于分位数的计算而言，Summary在通过PromQL进行查询时有更好的性能表现，而Histogram则会消耗更多的资源。反之对于客户端而言Histogram消耗的资源更少。在选择这两种方式时用户应该按照自己的实际场景进行选择。</p>
 
       
     </div>
@@ -512,8 +618,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/11/Linux基础/" rel="next" title="Linux基础">
-                <i class="fa fa-chevron-left"></i> Linux基础
+              <a href="/2019/02/12/OSI模型/" rel="next" title="OSI模型">
+                <i class="fa fa-chevron-left"></i> OSI模型
               </a>
             
           </div>
@@ -521,10 +627,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/12/OSI模型/" rel="prev" title="OSI模型">
-                OSI模型 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -569,8 +671,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -661,6 +772,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus监控架构图"><span class="nav-number">1.</span> <span class="nav-text">Prometheus监控架构图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的优点"><span class="nav-number">2.</span> <span class="nav-text">Prometheus的优点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#易于管理"><span class="nav-number">2.1.</span> <span class="nav-text">易于管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监控服务的内部运行状态"><span class="nav-number">2.2.</span> <span class="nav-text">监控服务的内部运行状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可视化"><span class="nav-number">2.3.</span> <span class="nav-text">可视化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强大的查询语言PromQL"><span class="nav-number">2.4.</span> <span class="nav-text">强大的查询语言PromQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高效"><span class="nav-number">2.5.</span> <span class="nav-text">高效</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需要监控的种类"><span class="nav-number">3.</span> <span class="nav-text">需要监控的种类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#业务监控"><span class="nav-number">3.1.</span> <span class="nav-text">业务监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日志监控"><span class="nav-number">3.2.</span> <span class="nav-text">日志监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络监控"><span class="nav-number">3.3.</span> <span class="nav-text">网络监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统监控"><span class="nav-number">3.4.</span> <span class="nav-text">系统监控</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的采集方式"><span class="nav-number">4.</span> <span class="nav-text">Prometheus的采集方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#被动模式"><span class="nav-number">4.1.</span> <span class="nav-text">被动模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">4.1.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">4.1.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pushgateway模式"><span class="nav-number">4.2.</span> <span class="nav-text">pushgateway模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pushgateway的优缺点"><span class="nav-number">4.2.1.</span> <span class="nav-text">pushgateway的优缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#既然有强大的Node-exporter为何要pushgateway"><span class="nav-number">4.3.</span> <span class="nav-text">既然有强大的Node_exporter为何要pushgateway</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的存储方式"><span class="nav-number">5.</span> <span class="nav-text">Prometheus的存储方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus中metrics的概念"><span class="nav-number">6.</span> <span class="nav-text">Prometheus中metrics的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gauges"><span class="nav-number">6.1.</span> <span class="nav-text">Gauges</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Counters"><span class="nav-number">6.2.</span> <span class="nav-text">Counters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Histogram"><span class="nav-number">6.3.</span> <span class="nav-text">Histogram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Summary"><span class="nav-number">6.4.</span> <span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Histogram-vs-Summary"><span class="nav-number">6.5.</span> <span class="nav-text">Histogram vs Summary</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
