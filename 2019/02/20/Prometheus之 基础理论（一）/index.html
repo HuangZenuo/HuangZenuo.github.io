@@ -103,26 +103,28 @@
 
 
 
-  <meta name="description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   OSI七层模型OSI模型（Open System Interconnection Model）是一个由ISO提出得到概念模型，试图提供一个使各种不同的的计算机和网络在世界范围内实现互联的标准框架。 分层结构OSI参考模型采用分层结构，如图所示。 不得不说，这张图真的超经典呀。一张图搞定你你不懂的一切。主要分为以下">
+  <meta name="description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs或Exporters中拉取监控数据。Exporter以Web API的形式对外暴露数据采集接口。 Prometheus Ser">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OSI模型">
-<meta property="og:url" content="https://ccnuo.com/2019/02/12/OSI模型/index.html">
+<meta property="og:title" content="Prometheus之 基础理论（一）">
+<meta property="og:url" content="https://ccnuo.com/2019/02/20/Prometheus之 基础理论（一）/index.html">
 <meta property="og:site_name" content="Gino&#39;s Blog">
-<meta property="og:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   OSI七层模型OSI模型（Open System Interconnection Model）是一个由ISO提出得到概念模型，试图提供一个使各种不同的的计算机和网络在世界范围内实现互联的标准框架。 分层结构OSI参考模型采用分层结构，如图所示。 不得不说，这张图真的超经典呀。一张图搞定你你不懂的一切。主要分为以下">
+<meta property="og:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs或Exporters中拉取监控数据。Exporter以Web API的形式对外暴露数据采集接口。 Prometheus Ser">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://ccnuo.com/images/ios七层模型图.jpeg">
-<meta property="og:updated_time" content="2019-04-03T09:57:10.027Z">
+<meta property="og:image" content="https://ccnuo.com/images/prometheus/prometheus-architecture.png">
+<meta property="og:image" content="https://ccnuo.com/images/prometheus/load_average.png">
+<meta property="og:image" content="https://ccnuo.com/images/prometheus/http_requests_total.png">
+<meta property="og:updated_time" content="2019-04-22T03:25:27.276Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OSI模型">
-<meta name="twitter:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   OSI七层模型OSI模型（Open System Interconnection Model）是一个由ISO提出得到概念模型，试图提供一个使各种不同的的计算机和网络在世界范围内实现互联的标准框架。 分层结构OSI参考模型采用分层结构，如图所示。 不得不说，这张图真的超经典呀。一张图搞定你你不懂的一切。主要分为以下">
-<meta name="twitter:image" content="https://ccnuo.com/images/ios七层模型图.jpeg">
+<meta name="twitter:title" content="Prometheus之 基础理论（一）">
+<meta name="twitter:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs或Exporters中拉取监控数据。Exporter以Web API的形式对外暴露数据采集接口。 Prometheus Ser">
+<meta name="twitter:image" content="https://ccnuo.com/images/prometheus/prometheus-architecture.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://ccnuo.com/2019/02/12/OSI模型/">
+  <link rel="canonical" href="https://ccnuo.com/2019/02/20/Prometheus之 基础理论（一）/">
 
 
 
@@ -132,7 +134,7 @@
   };
 </script>
 
-  <title>OSI模型 | Gino's Blog</title>
+  <title>Prometheus之 基础理论（一） | Gino's Blog</title>
   
 
 
@@ -343,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ccnuo.com/2019/02/12/OSI模型/">
+    <link itemprop="mainEntityOfPage" href="https://ccnuo.com/2019/02/20/Prometheus之 基础理论（一）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Gino">
@@ -360,7 +362,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">OSI模型
+          <h1 class="post-title" itemprop="name headline">Prometheus之 基础理论（一）
 
               
             
@@ -386,7 +388,7 @@
                 
               
 
-              <time title="创建时间：2019-02-12 17:49:59" itemprop="dateCreated datePublished" datetime="2019-02-12T17:49:59+08:00">2019-02-12</time>
+              <time title="创建时间：2019-02-20 18:14:00" itemprop="dateCreated datePublished" datetime="2019-02-20T18:14:00+08:00">2019-02-20</time>
             
 
             
@@ -403,7 +405,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-03 17:57:10" itemprop="dateModified" datetime="2019-04-03T17:57:10+08:00">2019-04-03</time>
+                <time title="修改时间：2019-04-22 11:25:27" itemprop="dateModified" datetime="2019-04-22T11:25:27+08:00">2019-04-22</time>
               
             
           </span>
@@ -420,7 +422,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Prometheus/" itemprop="url" rel="index"><span itemprop="name">Prometheus</span></a></span>
 
                 
                 
@@ -449,7 +451,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.3k</span>
+                <span title="本文字数">6.8k</span>
               
 
               
@@ -463,7 +465,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">4 分钟</span>
+                <span title="阅读时长">6 分钟</span>
               
             </div>
           
@@ -487,93 +489,105 @@
 <blockquote class="blockquote-center"><p>欢迎加入我的Python运维交流群：==&gt;<a href><font color="FF7F50">620331112</font></a>&lt;==</p>
 </blockquote>
 <hr>
-<h1 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h1><p><code>OSI模型（Open System Interconnection Model）是一个由ISO提出得到概念模型，试图提供一个使各种不同的的计算机和网络在世界范围内实现互联的标准框架。</code></p>
-<h2 id="分层结构"><a href="#分层结构" class="headerlink" title="分层结构"></a>分层结构</h2><p>OSI参考模型采用分层结构，如图所示。 不得不说，这张图真的超经典呀。一张图搞定你你不懂的一切。<br><img src="/images/ios七层模型图.jpeg" alt="OSI七层模型"><br>主要分为以下七层（从下至上）：物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。</p>
-<h2 id="各层功能"><a href="#各层功能" class="headerlink" title="各层功能"></a>各层功能</h2><ul>
-<li><strong>物理层</strong><br>简单的说，物理层（Physical Layer）确保原始的数据可在各种物理媒体上传输。在这一层上面规定了激活、维持、关闭通信端点之间的机械特性、电气特性、功能特性以及过程特性，为上层协议提供了一个传输数据的物理媒体。这一层传输的是bit流。</li>
-<li><strong>数据链路层</strong><br>数据链路层（Data Link Layer）在不可靠的物理介质上提供可靠的传输。该层的作用包括：物理地址寻址、数据的成帧、流量控制、数据的检错、重发等。这一层中将bit流封装成frame帧。</li>
-<li><strong>网络层</strong><br>网络层（Network Layer）负责对子网间的数据包进行路由选择。此外，网络层还可以实现拥塞控制、网际互连等功能。在这一层，数据的单位称为数据包（packet）。</li>
-<li><strong>传输层</strong><br>传输层是第一个端到端，即主机到主机的层次。传输层负责将上层数据分段并提供端到端的、可靠的或不可靠的传输。此外，传输层还要处理端到端的差错控制和流量控制问题。在这一层，数据的单位称为数据段（segment）。</li>
-<li><strong>会话层</strong><br>这一层管理主机之间的会话进程，即负责建立、管理、终止进程之间的会话。会话层还利用在数据中插入校验点来实现数据的同步，访问验证和会话管理在内的建立和维护应用之间通信的机制。如服务器验证用户登录便是由会话层完成的。使通信会话在通信失效时从校验点继续恢复通信。</li>
-<li><strong>表示层</strong><br>这一层主要解决用户信息的语法表示问题。它将欲交换的数据从适合于某一用户的抽象语法，转换为适合于OSI系统内部使用的传送语法。即提供格式化的表示和转换数据服务。数据的压缩和解压缩， 加密和解密等工作都由表示层负责。</li>
-<li><strong>应用层</strong><br>这一层为操作系统或网络应用程序提供访问网络服务的接口。</li>
+<h2 id="Prometheus监控架构图"><a href="#Prometheus监控架构图" class="headerlink" title="Prometheus监控架构图"></a>Prometheus监控架构图</h2><p><img src="/images/prometheus/prometheus-architecture.png" alt="prometheus-architecture"></p>
+<ul>
+<li>Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据<ul>
+<li>Jobs / Exporters：Prometheus可以从Jobs或Exporters中拉取监控数据。Exporter以Web API的形式对外暴露数据采集接口。</li>
+<li>Prometheus Server：Prometheus还可以从其他的Prometheus Server中拉取数据</li>
+<li>Pushgateway：对于一些以临时性Job运行的组件，Prometheus可能还没有来得及从中pull监控数据的情况下，这些Job已经结束了，Job运行时可以在运行时将监控数据推送到Pushgateway中，Prometheus从Pushgateway中拉取数据，防止监控数据丢失</li>
+<li>Service：是指Prometheus可以动态的发现一些服务，拉取数据进行监控，如从DNS，Kubernetes，Consul中发现</li>
 </ul>
-<h1 id="各层传输协议、传输单元、主要功能性设备比较"><a href="#各层传输协议、传输单元、主要功能性设备比较" class="headerlink" title="各层传输协议、传输单元、主要功能性设备比较"></a>各层传输协议、传输单元、主要功能性设备比较</h1><table>
-<thead>
-<tr>
-<th>名称</th>
-<th>传输协议</th>
-<th>主要功能设备/接口</th>
-<th>主要功能设备/接口</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>物理层</td>
-<td>IEEE 802.1A、IEEE 802.2</td>
-<td>bit-flow</td>
-<td>比特流    光纤、双绞线、中继器和集线器 &amp; RJ-45(网线接口)</td>
-</tr>
-<tr>
-<td>数据链路层</td>
-<td>ARP、MAC、 FDDI、Ethernet、Arpanet、PPP、PDN</td>
-<td>frame 帧</td>
-<td>网桥、二层交换机</td>
-</tr>
-<tr>
-<td>网络层</td>
-<td>IP、ICMP、ARP、RARP</td>
-<td>数据包（packet）</td>
-<td>路由器、三层交换机</td>
-</tr>
-<tr>
-<td>传输层</td>
-<td>TCP、UDP</td>
-<td>Segment/Datagram</td>
-<td>四层交换机</td>
-</tr>
-<tr>
-<td>会话层</td>
-<td>SMTP、DNS</td>
-<td>报文</td>
-<td>QoS</td>
-</tr>
-<tr>
-<td>表示层</td>
-<td>Telnet、SNMP</td>
-<td>报文</td>
-<td>-</td>
-</tr>
-<tr>
-<td>应用层</td>
-<td>FTP、TFTP、Telnet、HTTP、DNS</td>
-<td>报文</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<h1 id="关于协议你应该知道这些"><a href="#关于协议你应该知道这些" class="headerlink" title="关于协议你应该知道这些"></a>关于协议你应该知道这些</h1><p>以上通过图表、文字向大家阐述了七层模型每一层的具体功能及其相关协议，但知道了这些还不够，你还要知道以下这些。</p>
+</li>
+<li>Storage：即Prometheus的存储，利用Prometheus Server的本地存储</li>
+<li>PromQL：是Prometheus的查询语句，利用PromQL可以和一些WEBUI(如Grafana)集成</li>
+<li>AlertManager：独立于Prometheus的外部组件，用于监控系统的告警，通过配置文件可以配置一些告警规则，Prometheus会把告警推送到AlertManager，AlertManager按照告警配置处理告警内容，通过不同渠道将告警发送给不同责任人。Prometheus本身并不具有发送告警功能</li>
+</ul>
+<h2 id="Prometheus的优点"><a href="#Prometheus的优点" class="headerlink" title="Prometheus的优点"></a>Prometheus的优点</h2><p>Prometheus是一个开源的完整监控解决方案，其对传统监控系统的测试和告警模型进行了彻底的颠覆，形成了基于中央化的规则计算、统一分析和告警的新模型。 相比于传统监控系统Prometheus具有以下优点：</p>
+<h3 id="易于管理"><a href="#易于管理" class="headerlink" title="易于管理"></a>易于管理</h3><p>Prometheus核心部分只有一个单独的二进制文件，不存在任何的第三方依赖(数据库，缓存等等)。唯一需要的就是本地磁盘，因此不会有潜在级联故障的风险。<br>Prometheus基于Pull模型的架构方式，可以在任何地方（本地电脑，开发环境，测试环境）搭建我们的监控系统。对于一些复杂的情况，还可以使用Prometheus服务发现(Service Discovery)的能力动态管理监控目标。</p>
+<h3 id="监控服务的内部运行状态"><a href="#监控服务的内部运行状态" class="headerlink" title="监控服务的内部运行状态"></a>监控服务的内部运行状态</h3><p>Pometheus鼓励用户监控服务的内部状态，基于Prometheus丰富的Client库，用户可以轻松的在应用程序中添加对Prometheus的支持，从而让用户可以获取服务和应用内部真正的运行状态。</p>
+<h3 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h3><p>Prometheus Server中自带了一个Prometheus UI，通过这个UI可以方便地直接对数据进行查询，并且支持直接以图形化的形式展示数据。同时Prometheus还提供了一个独立的基于Ruby On Rails的Dashboard解决方案Promdash。最新的Grafana可视化工具也已经提供了完整的Prometheus支持，基于Grafana可以创建更加精美的监控图标。基于Prometheus提供的API还可以实现自己的监控可视化UI。</p>
+<h3 id="强大的查询语言PromQL"><a href="#强大的查询语言PromQL" class="headerlink" title="强大的查询语言PromQL"></a>强大的查询语言PromQL</h3><p>Prometheus内置了一个强大的数据查询语言PromQL。 通过PromQL可以实现对监控数据的查询、聚合。同时PromQL也被应用于数据可视化(如Grafana)以及告警当中。<br>通过PromQL可以轻松回答类似于以下问题：</p>
+<ul>
+<li>在过去一段时间中95%应用延迟时间的分布范围？</li>
+<li>预测在4小时后，磁盘空间占用大致会是什么情况？</li>
+<li>CPU占用率前5位的服务有哪些？(过滤)</li>
+</ul>
+<h3 id="高效"><a href="#高效" class="headerlink" title="高效"></a>高效</h3><p>对于监控系统而言，大量的监控任务必然导致有大量的数据产生。而Prometheus可以高效地处理这些数据，对于单一Prometheus Server实例而言它可以处理：</p>
+<ul>
+<li>数以百万的监控指标</li>
+<li>每秒处理数十万的数据点。</li>
+</ul>
+<h2 id="需要监控的种类"><a href="#需要监控的种类" class="headerlink" title="需要监控的种类"></a>需要监控的种类</h2><h3 id="业务监控"><a href="#业务监控" class="headerlink" title="业务监控"></a>业务监控</h3><ul>
+<li>接口（注册、聊天、上传、下载、点击、搜索、充值……），日活，实时在线、QPS。不过这些数据的阈值并不好确定。</li>
+</ul>
+<h3 id="日志监控"><a href="#日志监控" class="headerlink" title="日志监控"></a>日志监控</h3><ul>
+<li>线上发布了服务，怎么知道它一切正常，比如发布5台服务器，如何直观了解是否有请求进来，访问一切正常呢？我们需要采集各种类型的日志（应用，业务，用户行为，设备），通常会单独建设一套ELK，将采集的工作交给它们，再由监控软件采集日志的错误率</li>
+</ul>
+<h3 id="网络监控"><a href="#网络监控" class="headerlink" title="网络监控"></a>网络监控</h3><ul>
+<li>对网络设备的监控(交换机，路由器等)。对任何规模的业务来说，网络监控工具都是一个重要的功能</li>
+</ul>
+<h3 id="系统监控"><a href="#系统监控" class="headerlink" title="系统监控"></a>系统监控</h3><ul>
+<li>如CPU、内存、硬盘、IO、网络吞吐量、进程数量和状态等</li>
+</ul>
+<h2 id="Prometheus的采集方式"><a href="#Prometheus的采集方式" class="headerlink" title="Prometheus的采集方式"></a>Prometheus的采集方式</h2><ul>
+<li>consul主动在集群的内部获取集群服务器中的已经正常运行的服务</li>
+<li>采用HTTPpull/push两种对应的数据采集传输方式所有的数据采集都基本采用HTTP，而且分为pull/push推和拉两种方式去写采集程序方便</li>
+<li>主动模式：Prometheus主动去获取服务器上的具体监控项目</li>
+</ul>
+<h3 id="被动模式"><a href="#被动模式" class="headerlink" title="被动模式"></a>被动模式</h3><p>pull：指的是客户端（被监控机器）先安装各类已有exporters（由社区组织或企业开发的监控客户端插件）在系统上之后，exporters以守护进程的模式运行并开始采集数据exporter 本身也是一个http_server可以对http请求作出响应返回数据（K/V metrics）prometheus用pull 这种主动拉的方式（HTTP get）去访问每个节点上exporter并采样回需要的数据</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>监控数据的精细程度可以精确到1~5秒的采集精度</li>
+<li>周边的插件(exporter pushgateway)很丰富大多数的都不需要自己的开发</li>
+<li>本身基于数学计算模型，大量的实用函数可以实现很复杂的规则业务逻辑监控(如QPS的曲线弯曲下跌比例等模糊的概念)</li>
+<li>本身是开源的，更新速度，BUG修复快，支持N多语言做本身和插件的二次开发</li>
+</ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>目前不支持集群,但是可以用通过其他方式实现</li>
+<li>学习成本大</li>
+<li>对磁盘的资源消耗大，具体看监控的集群量监控的数据量的大小</li>
+</ul>
+<h3 id="pushgateway模式"><a href="#pushgateway模式" class="headerlink" title="pushgateway模式"></a>pushgateway模式</h3><p>exporter是⾸先安装在 被监控服务器上 运⾏在后台<br>然后⾃动采集系统数据，本身又是一个HTTP_Server可以被prometheus服务器定时去HTTP_GET取得数据<br>push的形式是把pushgateway安装在客户端或者服务端,运维通过自己写脚本抓取数据然后推送到pushgateway再由它推送到服务端上</p>
 <blockquote>
-<h2 id="TCP-UDP"><a href="#TCP-UDP" class="headerlink" title="TCP/UDP"></a>TCP/UDP</h2><ul>
-<li><strong>TCP/UDP是什么？</strong><br>TCP — Transmission Control Protocol，传输控制协议。<br>UDP — User Data Protocol，用户数据报协议。</li>
-<li><strong>TCP/UDP的区别（优缺点）？</strong><br>(1)、TCP是面向连接的，UDP是面向无连接的。TCP在通信之前必须通过三次握手机制与对方建立连接，而UDP通信不必与对方建立连接，不管对方的状态就直接把数据发送给对方<br>(2)、TCP连接过程耗时，UDP不耗时<br>(3)、TCP连接过程中出现的延时增加了被攻击的可能，安全性不高，而UDP不需要连接，安全性较高<br>(4)、TCP是可靠的，保证数据传输的正确性，不易丢包;UDP是不可靠的，易丢包<br>(5)、tcp传输速率较慢，实时性差，udp传输速率较快。tcp建立连接需要耗时，并且tcp首部信息太多，每次传输的有用信息较少，实时性差。<br>(6)、tcp是流模式，udp是数据包模式。tcp只要不超过缓冲区的大小就可以连续发送数据到缓冲区上，接收端只要缓冲区上有数据就可以读取，可以一次读取多个数据包，而udp一次只能读取一个数据包，数据包之间独立</li>
-<li><strong>TCP三次握手过程</strong><br><strong>STEP 1：</strong> 主机A通过向主机B发送一个含有同步序列号的标志位的数据段给主机B，向主机B请求建立连接,通过这个数据段，主机A告诉主机B两件事:我想要和你通信；你可以用哪个序列号作为起始数据段来回应我。<br><strong>STEP 2：</strong> 主机B收到主机A的请求后,用一个带有确认应答(ACK)和同步序列号(SYN)标志位的数据段响应主机A，也告诉主机A两件事：我已经收到你的请求了，你可以传输数据了；你要用哪佧序列号作为起始数据段来回应我。<br><strong>STEP 3：</strong> 主机A收到这个数据段后，再发送一个确认应答，确认已收到主机B的数据段：”我已收到回复，我现在要开始传输实际数据了。这样3次握手就完成了，主机A和主机B就可以传输数据了。</li>
-<li><strong>注意</strong><br>此时需要注意的是，<code>TCP建立连接要进行3次握手，而断开连接要进行4次。</code></li>
-<li><strong>名词解释</strong><br><strong>ACK：</strong> TCP报头的控制位之一，对数据进行确认，确认由目的端发出，用它来告诉发送端这个序列号之前的数据段都收到了。比如，确认号为X，则表示前X-1个数据段都收到了，只有当ACK=1时，确认号才有效，当ACK=0时，确认号无效，这时会要求重传数据，保证数据的完整性。<br><strong>SYN：</strong> 同步序列号，TCP建立连接时将这个位置1。<br><strong>FIN ：</strong> 发送端完成发送任务位，当TCP完成数据传输需要断开时，提出断开连接的一方将这位置1。</li>
-<li><strong>TCP可靠性的四大手段</strong><br>(1)、顺序编号： tcp在传输文件的时候，会将文件拆分为多个tcp数据包，每个装满的数据包大小大约在1k左右，tcp协议为保证可靠传输，会将这些数据包顺序编号<br>(2)、确认机制： 当数据包成功的被发送方发送给接收方，接收方会根据tcp协议反馈给发送方一个成功接收的ACK信号，信号中包含了当前包的序号<br>(3)、超时重传： 当发送方发送数据包给接收方时，会为每一个数据包设置一个定时器，当在设定的时间内，发送方仍没有收到接收方的ACK信号，会再次发送该数据包，直到收到接收方的ACK信号或者连接已断开<br>(4)、校验信息： tcp首部校验信息较多，udp首部校验信息较少。<h2 id="上文部分协议简单讲"><a href="#上文部分协议简单讲" class="headerlink" title="上文部分协议简单讲"></a>上文部分协议简单讲</h2></li>
-<li><strong>IEEE 802.1A、IEEE 802.2</strong><br>IEEE是英文Institute of Electrical and Electronics Engineers的简称，其中文译名是电气和电子工程师协会。IEEE 802规范定义了网卡如何访问传输介质（如光缆、双绞线、无线等），以及如何在传输介质上传输数据的方法，还定义了传输信息的网络设备之间连接建立、维护和拆除的途径。遵循IEEE 802标准的产品包括网卡、桥接器、路由器以及其他一些用来建立局域网络的组件。<br>IEEE802.1A —— 局域网体系结构<br>IEEE802.2 ——- 逻辑链路控制(LLC)</li>
-<li><strong>FDDI</strong><br>光纤分布式数据接口（Fiber Distributed Data Interface）</li>
-<li><strong>PPP</strong><br>点对点协议（Point to Point Protocol），为在点对点连接上传输多协议数据包提供了一个标准方法。</li>
-<li><strong>IP</strong><br>互联网协议（Internet Protocol），为计算机网络相互连接进行通信而设计的协议。任何厂家生产的计算机系统，只要遵守IP协议就可以与因特网互连互通。IP地址具有唯一性，根据用户性质的不同，可以分为5类。</li>
-<li><strong>ICMP</strong><br>控制报文协议（Internet Control Message Protocol）。TCP/IP设计了ICMP协议，当某个网关发现传输错误时，立即向信源主机发送ICMP报文，报告出错信息，让信源主机采取相应处理措施，它是一种差错和控制报文协议，不仅用于传输差错报文，还传输控制报文。</li>
-<li><strong>ARP/RARP</strong><br>ARP (Address Resolution Protocol) 地址解析协议<br>RARP (Reverse Address Resolution Protocol) 反向地址解析协议</li>
-<li><strong>SMTP</strong><br>简单邮件传输协议（Simple Mail Transfer Protocol），它是一组用于由源地址到目的地址传送邮件的规则，由它来控制信件的中转方式。SMTP协议属于TCP/IP协议簇，它帮助每台计算机在发送或中转信件时找到下一个目的地。通过SMTP协议所指定的服务器,就可以把E-mail寄到收信人的服务器上了。</li>
-<li><strong>SNMP</strong><br>简单网络管理协议（Simple Network Management Protocol ），该协议能够支持网络管理系统，用以监测连接到网络上的设备是否有任何引起管理上关注的情况。</li>
-<li><strong>DNS</strong><br>域名系统（Domain Name System），因特网上作为域名和IP地址相互映射的一个分布式数据库，能够使用户更方便的访问互联网，而不用去记住能够被机器直接读取的IP数串。通过主机名，最终得到该主机名对应的IP地址的过程叫做域名解析(或主机名解析)。DNS协议运行在UDP协议之上，使用端口号53。</li>
-<li><strong>FTP</strong><br>文本传输协议（File Transfer Protocol），用于Internet上的控制文件的双向传输。同时，它也是一个应用程序Application）。基于不同的操作系统有不同的FTP应用程序，而所有这些应用程序都遵守该协议以传输文件。在FTP的使用当中，用户经常“下载”（Download）和“上载”（Upload）。“下载”文件就是从远程主机拷贝文件至自己的计算机上；“上载”文件就是将文件从自己的计算机中拷贝至远程主机上。</li>
-<li><strong>HTTP</strong><br>超文本传输协议（HyperText Transfer Protocol），是互联网上应用最为广泛的一种网络协议。所有的WWW文件都必须遵守这个标准。它可以使浏览器更加高效，使网络传输减少。它不仅保证计算机正确快速地传输超文本文档，还确定传输文档中的哪一部分，以及哪部分内容首先显示(如文本先于图形)等。HTTP是一个应用层协议，由请求和响应构成，是一个标准的客户端服务器模型，是一个无状态的协议。</li>
-</ul>
+<p>pushgateway本⾝也是⼀个 http服务器</p>
 </blockquote>
+<h4 id="pushgateway的优缺点"><a href="#pushgateway的优缺点" class="headerlink" title="pushgateway的优缺点"></a>pushgateway的优缺点</h4><ul>
+<li>（1）pushgateway会形成一个单点瓶颈，假如好多个脚本同时发送给一个pushgateway的进程如果这个进程没了，那么监控数据也就没了</li>
+<li>（2）pushgateway并不能对发送过来的脚本采集数据进行更智能的判断假如脚本中间采集出问题了那么有问题的数据pushgateway一样照单全收发送给prometheus</li>
+</ul>
+<h3 id="既然有强大的Node-exporter为何要pushgateway"><a href="#既然有强大的Node-exporter为何要pushgateway" class="headerlink" title="既然有强大的Node_exporter为何要pushgateway"></a>既然有强大的Node_exporter为何要pushgateway</h3><blockquote>
+<p>既生瑜，何生亮？</p>
+</blockquote>
+<ul>
+<li>（1）exporter虽然采集的类型相当的丰富，但是依然有一些人为的特殊请求，非规则化的数据监控项目，需要定制化</li>
+<li>（2）exporter由于数据类型采集量大，但是大多数采集回来的数据我们实际上完全不会使用上，pushgateway实际上就是帮我们节省资源</li>
+<li>（3）一个新的自定义的pushgateway脚本开发快速易上手，而要二次开发exporter需要熟悉它的语言和大量的时间的去调试</li>
+<li>（4）pushgateway比较的灵活适合生产环境中的快速开发监控</li>
+</ul>
+<h2 id="Prometheus的存储方式"><a href="#Prometheus的存储方式" class="headerlink" title="Prometheus的存储方式"></a>Prometheus的存储方式</h2><ul>
+<li>prometheus采用的是time-series（时间序列）的方式以一种自定义的格式存储在本地硬盘上</li>
+<li>prometheus的本地T-S（time-series）数据库以每两小时为间隔来分block（块）存储，每一个块中又分为多个chunk文件，chunk文件是用来存放采集过来的数据的T-S数据，metadata和索引文件（index）</li>
+<li>index文件是对metrics（prometheus中一次K/V采集数据叫做一个metric）和labels（标签）进行索引之后存储在chunk中chunk是作为存储的基本单位，index and metadata是作为子集</li>
+<li>prometheus平时是将采集过来的数据先都存放在内存之中（prometheus对内存的消耗还是不小的）以类似缓存的方式用于加快搜索和访问</li>
+<li>当出现down机时，prometheus有一种保护机制叫做WAL可以讲数据定期存入硬盘中以chunk来表示，并在重新后动时用以恢复进入内存</li>
+</ul>
+<h2 id="Prometheus中metrics的概念"><a href="#Prometheus中metrics的概念" class="headerlink" title="Prometheus中metrics的概念"></a>Prometheus中metrics的概念</h2><blockquote>
+<p>在prometheus中，对于采集过来的数据，我们统一称作为metrics<br>metrics是对采样数据的总称，它并不代表某一种具体的数据格式，是一种对于度量计算单位的抽象</p>
+</blockquote>
+<h3 id="Gauges"><a href="#Gauges" class="headerlink" title="Gauges"></a>Gauges</h3><p>这一个最简单的度量标准，只有一个简单的返回值，或者叫瞬时状态。当需要监控硬盘或者内存的使用量，那么就应该使用Gauges的metrics格式来度量，因为硬盘的容量和内存的使用量是瞬时的，没有任何的规律，变化方式多种多样，既不能肯定是持续增长，既不能肯定是持续下降。Gauges就是这种使用类型的代表</p>
+<blockquote>
+<p>收集系统负载<br><img src="/images/prometheus/load_average.png" alt="load_average"></p>
+</blockquote>
+<h3 id="Counters"><a href="#Counters" class="headerlink" title="Counters"></a>Counters</h3><p>Counter就是计数器，从数据量0开始累积计算，在理想的状态下，只能是永远的增长，在非特殊情况，不会下降<br>例如需要统计某一个时间段内http的总请求数，本周达到了10000的请求数，下周达到了15000。这样下去，Counter的数据只可能是增加或是保持不变（例如不再有请求），理想状态下不可能出现降低的情况。<br>如果到了新的一年，需要清空这些请求数，也就是上面说到的特殊情况下，那么这个Counter就会被降为0</p>
+<blockquote>
+<p>收集http总请求数<br><img src="/images/prometheus/http_requests_total.png" alt="http_requests_total"></p>
+</blockquote>
+<h3 id="Histogram"><a href="#Histogram" class="headerlink" title="Histogram"></a>Histogram</h3><p>Histogram统计数据的分布情况，比如最小值，最大值，中间值，还有中位数，百分数值等，常用于跟踪事件发生(通常是请求持续时间或响应大小)的规模，例如响应时间小于500毫秒的多少次、500毫秒~1000毫秒之间多少次、1000毫秒以上的多少次。它特别之处是可以对记录的内容进行分组。<br>Histogram指标直接反应了在不同区间内样本的个数，标签le定义了分布桶Bucket的边界，sum是所有数据的和，count是数据个数<br>这里以Prometheus自身的监控指标prometheus_tsdb_compaction_duration为例，该监控指标记录了Prometheus进行数据压缩任务的运行耗时的分布统计情况。如下所示，是Prometheus返回的样本数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># HELP prometheus_tsdb_compaction_duration Duration of compaction runs.</span><br><span class="line"># TYPE prometheus_tsdb_compaction_duration histogram</span><br><span class="line">prometheus_tsdb_compaction_duration_bucket&#123;le=&quot;1&quot;&#125; 2</span><br><span class="line">prometheus_tsdb_compaction_duration_bucket&#123;le=&quot;2&quot;&#125; 36</span><br><span class="line">prometheus_tsdb_compaction_duration_bucket&#123;le=&quot;4&quot;&#125; 36</span><br><span class="line">prometheus_tsdb_compaction_duration_bucket&#123;le=&quot;8&quot;&#125; 36</span><br><span class="line">prometheus_tsdb_compaction_duration_bucket&#123;le=&quot;16&quot;&#125; 36</span><br><span class="line">prometheus_tsdb_compaction_duration_bucket&#123;le=&quot;32&quot;&#125; 36</span><br><span class="line">prometheus_tsdb_compaction_duration_bucket&#123;le=&quot;64&quot;&#125; 36</span><br><span class="line">prometheus_tsdb_compaction_duration_bucket&#123;le=&quot;128&quot;&#125; 36</span><br><span class="line">prometheus_tsdb_compaction_duration_bucket&#123;le=&quot;256&quot;&#125; 36</span><br><span class="line">prometheus_tsdb_compaction_duration_bucket&#123;le=&quot;512&quot;&#125; 36</span><br><span class="line">prometheus_tsdb_compaction_duration_bucket&#123;le=&quot;+Inf&quot;&#125; 36</span><br><span class="line">prometheus_tsdb_compaction_duration_sum 51.31017077500001</span><br><span class="line">prometheus_tsdb_compaction_duration_count 36</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>如上所示，表示当前Promtheus共进行了36次数据压缩，总耗时为51.31017077500001ms。其中任务耗时在0~1ms区间内的为2次、在0~2ms区间范围内为36次，以此类推。</p>
+</blockquote>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>Summary和Histogram十分相似，常用于跟踪事件(通常是要求持续时间和响应大小)发生的规模，例如：请求耗时、响应大小。同样提供 count 和 sum 全部值的功能。但支持按百分比跟踪结果。它直接存储了 quantile 数据，而不是根据统计区间计算出来的<br>例：指标prometheus_tsdb_wal_fsync_duration_seconds的指标类型为Summary。 它记录了Prometheus Server中wal_fsync处理的处理时间，通过访问Prometheus Server的/metrics地址，可以获取到以下监控样本数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># HELP prometheus_tsdb_wal_fsync_duration_seconds Duration of WAL fsync.</span><br><span class="line"># TYPE prometheus_tsdb_wal_fsync_duration_seconds summary</span><br><span class="line">prometheus_tsdb_wal_fsync_duration_seconds&#123;quantile=&quot;0.5&quot;&#125; 0.012352463</span><br><span class="line">prometheus_tsdb_wal_fsync_duration_seconds&#123;quantile=&quot;0.9&quot;&#125; 0.014458005</span><br><span class="line">prometheus_tsdb_wal_fsync_duration_seconds&#123;quantile=&quot;0.99&quot;&#125; 0.017316173</span><br><span class="line">prometheus_tsdb_wal_fsync_duration_seconds_sum 2.888716127000002</span><br><span class="line">prometheus_tsdb_wal_fsync_duration_seconds_count 216</span><br></pre></td></tr></table></figure></p>
+<p>从上面的样本中可以得知当前Prometheus Server进行wal_fsync操作的总次数为216次，耗时2.888716127000002s。其中中位数（比如quantile=0.5对应的是数据集中小于其占比为50%的值）的耗时为0.012352463，9分位数（quantile=0.9）的耗时为0.014458005s</p>
+<h3 id="Histogram-vs-Summary"><a href="#Histogram-vs-Summary" class="headerlink" title="Histogram vs Summary"></a>Histogram vs Summary</h3><p>它们都包含sum和count。<br>Histogram通过histogram_quantile函数在服务器端计算的分位数。而Sumamry的分位数则是直接在客户端计算完成。因此对于分位数的计算而言，Summary在通过PromQL进行查询时有更好的性能表现，而Histogram则会消耗更多的资源。反之对于客户端而言Histogram消耗的资源更少。在选择这两种方式时用户应该按照自己的实际场景进行选择。</p>
 
       
     </div>
@@ -604,8 +618,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/11/Python基础/" rel="next" title="Python基础">
-                <i class="fa fa-chevron-left"></i> Python基础
+              <a href="/2019/02/12/OSI模型/" rel="next" title="OSI模型">
+                <i class="fa fa-chevron-left"></i> OSI模型
               </a>
             
           </div>
@@ -613,10 +627,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/20/Prometheus之 基础理论（一）/" rel="prev" title="Prometheus之 基础理论（一）">
-                Prometheus之 基础理论（一） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -773,7 +783,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OSI七层模型"><span class="nav-number">1.</span> <span class="nav-text">OSI七层模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分层结构"><span class="nav-number">1.1.</span> <span class="nav-text">分层结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各层功能"><span class="nav-number">1.2.</span> <span class="nav-text">各层功能</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#各层传输协议、传输单元、主要功能性设备比较"><span class="nav-number">2.</span> <span class="nav-text">各层传输协议、传输单元、主要功能性设备比较</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于协议你应该知道这些"><span class="nav-number">3.</span> <span class="nav-text">关于协议你应该知道这些</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-UDP"><span class="nav-number">3.1.</span> <span class="nav-text">TCP/UDP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上文部分协议简单讲"><span class="nav-number">3.2.</span> <span class="nav-text">上文部分协议简单讲</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus监控架构图"><span class="nav-number">1.</span> <span class="nav-text">Prometheus监控架构图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的优点"><span class="nav-number">2.</span> <span class="nav-text">Prometheus的优点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#易于管理"><span class="nav-number">2.1.</span> <span class="nav-text">易于管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监控服务的内部运行状态"><span class="nav-number">2.2.</span> <span class="nav-text">监控服务的内部运行状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可视化"><span class="nav-number">2.3.</span> <span class="nav-text">可视化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强大的查询语言PromQL"><span class="nav-number">2.4.</span> <span class="nav-text">强大的查询语言PromQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高效"><span class="nav-number">2.5.</span> <span class="nav-text">高效</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需要监控的种类"><span class="nav-number">3.</span> <span class="nav-text">需要监控的种类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#业务监控"><span class="nav-number">3.1.</span> <span class="nav-text">业务监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日志监控"><span class="nav-number">3.2.</span> <span class="nav-text">日志监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络监控"><span class="nav-number">3.3.</span> <span class="nav-text">网络监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统监控"><span class="nav-number">3.4.</span> <span class="nav-text">系统监控</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的采集方式"><span class="nav-number">4.</span> <span class="nav-text">Prometheus的采集方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#被动模式"><span class="nav-number">4.1.</span> <span class="nav-text">被动模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">4.1.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">4.1.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pushgateway模式"><span class="nav-number">4.2.</span> <span class="nav-text">pushgateway模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pushgateway的优缺点"><span class="nav-number">4.2.1.</span> <span class="nav-text">pushgateway的优缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#既然有强大的Node-exporter为何要pushgateway"><span class="nav-number">4.3.</span> <span class="nav-text">既然有强大的Node_exporter为何要pushgateway</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的存储方式"><span class="nav-number">5.</span> <span class="nav-text">Prometheus的存储方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus中metrics的概念"><span class="nav-number">6.</span> <span class="nav-text">Prometheus中metrics的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gauges"><span class="nav-number">6.1.</span> <span class="nav-text">Gauges</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Counters"><span class="nav-number">6.2.</span> <span class="nav-text">Counters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Histogram"><span class="nav-number">6.3.</span> <span class="nav-text">Histogram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Summary"><span class="nav-number">6.4.</span> <span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Histogram-vs-Summary"><span class="nav-number">6.5.</span> <span class="nav-text">Histogram vs Summary</span></a></li></ol></li></ol></div>
             
 
           </div>
