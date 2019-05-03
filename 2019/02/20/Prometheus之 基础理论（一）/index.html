@@ -114,7 +114,7 @@
 <meta property="og:image" content="https://ccnuo.com/images/prometheus/load_average.png">
 <meta property="og:image" content="https://ccnuo.com/images/prometheus/http_requests_total.png">
 <meta property="og:image" content="https://ccnuo.com/images/prometheus/prometheus_page.png">
-<meta property="og:updated_time" content="2019-05-03T09:05:11.448Z">
+<meta property="og:updated_time" content="2019-05-03T09:07:17.073Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Prometheus之 基础理论及安装部署（一）">
 <meta name="twitter:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Prometheus监控架构图  Retrieval：中定义了Prometheus Server需要从哪些地方拉取数据 Jobs / Exporters：Prometheus可以从Jobs或Exporters中拉取监控数据。Exporter以Web API的形式对外暴露数据采集接口。 Prometheus Ser">
@@ -406,7 +406,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-03 17:05:11" itemprop="dateModified" datetime="2019-05-03T17:05:11+08:00">2019-05-03</time>
+                <time title="修改时间：2019-05-03 17:07:17" itemprop="dateModified" datetime="2019-05-03T17:07:17+08:00">2019-05-03</time>
               
             
           </span>
@@ -452,7 +452,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">8k</span>
+                <span title="本文字数">7.7k</span>
               
 
               
@@ -516,19 +516,7 @@
 <h3 id="高效"><a href="#高效" class="headerlink" title="高效"></a>高效</h3><p>对于监控系统而言，大量的监控任务必然导致有大量的数据产生。而Prometheus可以高效地处理这些数据，对于单一Prometheus Server实例而言它可以处理：</p>
 <ul>
 <li>数以百万的监控指标</li>
-<li>每秒处理数十万的数据点。</li>
-</ul>
-<h2 id="需要监控的种类"><a href="#需要监控的种类" class="headerlink" title="需要监控的种类"></a>需要监控的种类</h2><h3 id="业务监控"><a href="#业务监控" class="headerlink" title="业务监控"></a>业务监控</h3><ul>
-<li>接口（注册、聊天、上传、下载、点击、搜索、充值……），日活，实时在线、QPS。不过这些数据的阈值并不好确定。</li>
-</ul>
-<h3 id="日志监控"><a href="#日志监控" class="headerlink" title="日志监控"></a>日志监控</h3><ul>
-<li>线上发布了服务，怎么知道它一切正常，比如发布5台服务器，如何直观了解是否有请求进来，访问一切正常呢？我们需要采集各种类型的日志（应用，业务，用户行为，设备），通常会单独建设一套ELK，将采集的工作交给它们，再由监控软件采集日志的错误率</li>
-</ul>
-<h3 id="网络监控"><a href="#网络监控" class="headerlink" title="网络监控"></a>网络监控</h3><ul>
-<li>对网络设备的监控(交换机，路由器等)。对任何规模的业务来说，网络监控工具都是一个重要的功能</li>
-</ul>
-<h3 id="系统监控"><a href="#系统监控" class="headerlink" title="系统监控"></a>系统监控</h3><ul>
-<li>如CPU、内存、硬盘、IO、网络吞吐量、进程数量和状态等</li>
+<li>每秒处理数十万的数据点</li>
 </ul>
 <h2 id="Prometheus的采集方式"><a href="#Prometheus的采集方式" class="headerlink" title="Prometheus的采集方式"></a>Prometheus的采集方式</h2><ul>
 <li>consul主动在集群的内部获取集群服务器中的已经正常运行的服务</li>
@@ -634,8 +622,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/20/Prometheus之 安装部署（二）/" rel="prev" title="Prometheus之 Docker方式部署及Node_exporter监控（二）">
-                Prometheus之 Docker方式部署及Node_exporter监控（二） <i class="fa fa-chevron-right"></i>
+              <a href="/2019/02/20/Prometheus之 安装部署（二）/" rel="prev" title="Prometheus之 Node_exporter监控（二）">
+                Prometheus之 Node_exporter监控（二） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -795,7 +783,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus监控架构图"><span class="nav-number">1.</span> <span class="nav-text">Prometheus监控架构图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的优点"><span class="nav-number">2.</span> <span class="nav-text">Prometheus的优点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#易于管理"><span class="nav-number">2.1.</span> <span class="nav-text">易于管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监控服务的内部运行状态"><span class="nav-number">2.2.</span> <span class="nav-text">监控服务的内部运行状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可视化"><span class="nav-number">2.3.</span> <span class="nav-text">可视化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强大的查询语言PromQL"><span class="nav-number">2.4.</span> <span class="nav-text">强大的查询语言PromQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高效"><span class="nav-number">2.5.</span> <span class="nav-text">高效</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需要监控的种类"><span class="nav-number">3.</span> <span class="nav-text">需要监控的种类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#业务监控"><span class="nav-number">3.1.</span> <span class="nav-text">业务监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#日志监控"><span class="nav-number">3.2.</span> <span class="nav-text">日志监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络监控"><span class="nav-number">3.3.</span> <span class="nav-text">网络监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统监控"><span class="nav-number">3.4.</span> <span class="nav-text">系统监控</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的采集方式"><span class="nav-number">4.</span> <span class="nav-text">Prometheus的采集方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#被动模式"><span class="nav-number">4.1.</span> <span class="nav-text">被动模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">4.1.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">4.1.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pushgateway模式"><span class="nav-number">4.2.</span> <span class="nav-text">pushgateway模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pushgateway的优缺点"><span class="nav-number">4.2.1.</span> <span class="nav-text">pushgateway的优缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#既然有强大的Node-exporter为何要pushgateway"><span class="nav-number">4.3.</span> <span class="nav-text">既然有强大的Node_exporter为何要pushgateway</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的存储方式"><span class="nav-number">5.</span> <span class="nav-text">Prometheus的存储方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus中metrics的概念"><span class="nav-number">6.</span> <span class="nav-text">Prometheus中metrics的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gauges"><span class="nav-number">6.1.</span> <span class="nav-text">Gauges</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Counters"><span class="nav-number">6.2.</span> <span class="nav-text">Counters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Histogram"><span class="nav-number">6.3.</span> <span class="nav-text">Histogram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Summary"><span class="nav-number">6.4.</span> <span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Histogram-vs-Summary"><span class="nav-number">6.5.</span> <span class="nav-text">Histogram vs Summary</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行Prometheus"><span class="nav-number">7.</span> <span class="nav-text">运行Prometheus</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建目录"><span class="nav-number">7.1.</span> <span class="nav-text">创建目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编写配置文件"><span class="nav-number">7.2.</span> <span class="nav-text">编写配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动Docker"><span class="nav-number">7.3.</span> <span class="nav-text">启动Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问页面"><span class="nav-number">7.4.</span> <span class="nav-text">访问页面</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus监控架构图"><span class="nav-number">1.</span> <span class="nav-text">Prometheus监控架构图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的优点"><span class="nav-number">2.</span> <span class="nav-text">Prometheus的优点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#易于管理"><span class="nav-number">2.1.</span> <span class="nav-text">易于管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#监控服务的内部运行状态"><span class="nav-number">2.2.</span> <span class="nav-text">监控服务的内部运行状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可视化"><span class="nav-number">2.3.</span> <span class="nav-text">可视化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强大的查询语言PromQL"><span class="nav-number">2.4.</span> <span class="nav-text">强大的查询语言PromQL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高效"><span class="nav-number">2.5.</span> <span class="nav-text">高效</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的采集方式"><span class="nav-number">3.</span> <span class="nav-text">Prometheus的采集方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#被动模式"><span class="nav-number">3.1.</span> <span class="nav-text">被动模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优点"><span class="nav-number">3.1.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缺点"><span class="nav-number">3.1.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pushgateway模式"><span class="nav-number">3.2.</span> <span class="nav-text">pushgateway模式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pushgateway的优缺点"><span class="nav-number">3.2.1.</span> <span class="nav-text">pushgateway的优缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#既然有强大的Node-exporter为何要pushgateway"><span class="nav-number">3.3.</span> <span class="nav-text">既然有强大的Node_exporter为何要pushgateway</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus的存储方式"><span class="nav-number">4.</span> <span class="nav-text">Prometheus的存储方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Prometheus中metrics的概念"><span class="nav-number">5.</span> <span class="nav-text">Prometheus中metrics的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gauges"><span class="nav-number">5.1.</span> <span class="nav-text">Gauges</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Counters"><span class="nav-number">5.2.</span> <span class="nav-text">Counters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Histogram"><span class="nav-number">5.3.</span> <span class="nav-text">Histogram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Summary"><span class="nav-number">5.4.</span> <span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Histogram-vs-Summary"><span class="nav-number">5.5.</span> <span class="nav-text">Histogram vs Summary</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行Prometheus"><span class="nav-number">6.</span> <span class="nav-text">运行Prometheus</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建目录"><span class="nav-number">6.1.</span> <span class="nav-text">创建目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编写配置文件"><span class="nav-number">6.2.</span> <span class="nav-text">编写配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动Docker"><span class="nav-number">6.3.</span> <span class="nav-text">启动Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问页面"><span class="nav-number">6.4.</span> <span class="nav-text">访问页面</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -835,7 +823,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">22k</span>
+    <span title="站点总字数">23k</span>
   
 
   
