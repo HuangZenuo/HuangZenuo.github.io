@@ -112,7 +112,8 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ccnuo.com/images/prometheus/node_exporter_page.png">
 <meta property="og:image" content="https://ccnuo.com/images/prometheus/node_prome_yml.png">
-<meta property="og:updated_time" content="2019-05-03T11:18:37.901Z">
+<meta property="og:image" content="https://ccnuo.com/images/prometheus/cpu_load_5m.png">
+<meta property="og:updated_time" content="2019-05-03T16:36:59.725Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Prometheus之 Node_exporter监控（二）">
 <meta name="twitter:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Node_exporter介绍在讨论 Exporter 之前，有必要先介绍一下 Prometheus 文本数据格式，因为一个 Exporter 本质上就是将收集的数据，转化为对应的文本格式，并提供 http 请求。 Exporter 收集的数据转化的文本内容以行 (\n) 为单位，空行将被忽略, 文本内容最后一行">
@@ -404,7 +405,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-03 19:18:37" itemprop="dateModified" datetime="2019-05-03T19:18:37+08:00">2019-05-03</time>
+                <time title="修改时间：2019-05-04 00:36:59" itemprop="dateModified" datetime="2019-05-04T00:36:59+08:00">2019-05-04</time>
               
             
           </span>
@@ -450,7 +451,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.3k</span>
+                <span title="本文字数">4.6k</span>
               
 
               
@@ -464,7 +465,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">3 分钟</span>
+                <span title="阅读时长">4 分钟</span>
               
             </div>
           
@@ -753,6 +754,18 @@
 <blockquote>
 <p>附修改后的yml<br><img src="/images/prometheus/node_prome_yml.png" alt="修改后的yml"></p>
 </blockquote>
+<h3 id="在Prometheus上过滤收集器"><a href="#在Prometheus上过滤收集器" class="headerlink" title="在Prometheus上过滤收集器"></a>在Prometheus上过滤收集器</h3><p><a href="https://github.com/HuangZenuo/Prometheus/blob/master/prometheus.yml" target="_blank" rel="noopener">https://github.com/HuangZenuo/Prometheus/blob/master/prometheus.yml</a></p>
+<p>我们可以使用params:collect标签来过滤想要的数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">  - job_name: linux</span><br><span class="line">······</span><br><span class="line">    params:</span><br><span class="line">      collect[]:</span><br><span class="line">        - cpu</span><br><span class="line">        - meminfo</span><br><span class="line">        - diskstats</span><br><span class="line">        - netstat</span><br><span class="line">        - filefd</span><br><span class="line">        - filesystem</span><br><span class="line">        - xfs</span><br><span class="line">        - systemd</span><br></pre></td></tr></table></figure></p>
+<h3 id="收集CPU使用率"><a href="#收集CPU使用率" class="headerlink" title="收集CPU使用率"></a>收集CPU使用率</h3><p>PromQL有一个名为irate的函数，用于计算距离向量中时间序列的每秒瞬<br>时增长率。我们在node_cpu_seconds_total度量上使用irate函数。在查询框中输入:<br><code>irate(node_cpu_seconds_total{job=&quot;linux&quot;}[5m])</code></p>
+<p>现在我们需要使用聚合运算符avg封装irate函数，并添加了一个by子句，该子句通过实例标签聚合。这将产生三个新的指标，使用来自所有CPU和所有模式的值来平均主机的CPU使用情况。之后再使用mode=”idle”，只查询空闲数据，将其乘以100，得出每5分钟平均空闲的百分比数值。<br><code>avg(irate(node_cpu_seconds_total{job=&quot;linux&quot;,mode=&quot;idle&quot;}[5m])) by (instance) * 100</code></p>
+<p>现在我们得到了每台主机每5分钟平均空闲的CPU百分比，用100减去它，那么就是已经使用的百分比<br><code>100 - avg(irate(node_cpu_seconds_total{job=&quot;linux&quot;,mode=&quot;idle&quot;}[5m])) by (instance) * 100</code></p>
+<p><img src="/images/prometheus/cpu_load_5m.png" alt="upload successful"></p>
+<h3 id="收集内存使用率"><a href="#收集内存使用率" class="headerlink" title="收集内存使用率"></a>收集内存使用率</h3><p>我们需要收集node_memory度量的一些子集，以计算利用率度量:</p>
+<blockquote>
+<p>这些指标都以字节表示</p>
+</blockquote>
+<p>• node_memory_MemTotal_bytes - 主机上的总内存<br>• node_memory_MemFree_bytes - 主机上的空闲内存<br>• node_memory_Buffers_bytes_bytes - 缓冲区缓存中的内存<br>• node_memory_Cached_bytes_bytes - 页面缓存中的内存</p>
+<p>计算使用内存的百分比<br>(node_memory_MemTotal_bytes - (node_memory_MemFree_bytes + node_memory_Cached_bytes + node_memory_Buffers_bytes)) / node_memory_MemTotal_bytes * 100</p>
 
       
     </div>
@@ -954,7 +967,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-exporter介绍"><span class="nav-number">1.</span> <span class="nav-text">Node_exporter介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#默认开启的功能"><span class="nav-number">1.1.</span> <span class="nav-text">默认开启的功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#默认关闭的功能"><span class="nav-number">1.2.</span> <span class="nav-text">默认关闭的功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将被废弃功能"><span class="nav-number">1.3.</span> <span class="nav-text">将被废弃功能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行Node-exporter"><span class="nav-number">2.</span> <span class="nav-text">运行Node_exporter</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#启动Docker"><span class="nav-number">2.1.</span> <span class="nav-text">启动Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问页面"><span class="nav-number">2.2.</span> <span class="nav-text">访问页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改Prometheus-yml"><span class="nav-number">2.3.</span> <span class="nav-text">修改Prometheus.yml</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-exporter介绍"><span class="nav-number">1.</span> <span class="nav-text">Node_exporter介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#默认开启的功能"><span class="nav-number">1.1.</span> <span class="nav-text">默认开启的功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#默认关闭的功能"><span class="nav-number">1.2.</span> <span class="nav-text">默认关闭的功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将被废弃功能"><span class="nav-number">1.3.</span> <span class="nav-text">将被废弃功能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行Node-exporter"><span class="nav-number">2.</span> <span class="nav-text">运行Node_exporter</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#启动Docker"><span class="nav-number">2.1.</span> <span class="nav-text">启动Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问页面"><span class="nav-number">2.2.</span> <span class="nav-text">访问页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改Prometheus-yml"><span class="nav-number">2.3.</span> <span class="nav-text">修改Prometheus.yml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在Prometheus上过滤收集器"><span class="nav-number">2.4.</span> <span class="nav-text">在Prometheus上过滤收集器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#收集CPU使用率"><span class="nav-number">2.5.</span> <span class="nav-text">收集CPU使用率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#收集内存使用率"><span class="nav-number">2.6.</span> <span class="nav-text">收集内存使用率</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -994,7 +1007,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">25k</span>
+    <span title="站点总字数">26k</span>
   
 
   
@@ -1005,7 +1018,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">22 分钟</span>
+    <span title="站点阅读时长">24 分钟</span>
   
 </div>
 
