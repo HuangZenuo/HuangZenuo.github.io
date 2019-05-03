@@ -112,7 +112,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ccnuo.com/images/prometheus/node_exporter_page.png">
 <meta property="og:image" content="https://ccnuo.com/images/prometheus/node_prome_yml.png">
-<meta property="og:updated_time" content="2019-05-03T11:05:33.200Z">
+<meta property="og:updated_time" content="2019-05-03T11:06:17.152Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Prometheus之 Node_exporter监控（二）">
 <meta name="twitter:description" content="欢迎加入我的Python运维交流群：==&amp;gt;620331112&amp;lt;==   Node_exporter介绍在讨论 Exporter 之前，有必要先介绍一下 Prometheus 文本数据格式，因为一个 Exporter 本质上就是将收集的数据，转化为对应的文本格式，并提供 http 请求。 Exporter 收集的数据转化的文本内容以行 (\n) 为单位，空行将被忽略, 文本内容最后一行">
@@ -404,7 +404,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-03 19:05:33" itemprop="dateModified" datetime="2019-05-03T19:05:33+08:00">2019-05-03</time>
+                <time title="修改时间：2019-05-03 19:06:17" itemprop="dateModified" datetime="2019-05-03T19:06:17+08:00">2019-05-03</time>
               
             
           </span>
@@ -492,7 +492,23 @@
 <p>Exporter 收集的数据转化的文本内容以行 (\n) 为单位，空行将被忽略, 文本内容最后一行为空行。</p>
 <p>Exporter是Prometheus的一类数据采集组件的总称。它负责从目标处搜集数据，并将其转化为Prometheus支持的格式。 与传统的数据采集组件不同的是，它并不向中央服务器发送数据，而是等待中央服务器主动前来抓取，默认的抓取地址为<a href="http://IP:9100/metrics" target="_blank" rel="noopener">http://IP:9100/metrics</a></p>
 <p>Prometheus提供多种类型的Exporter用于采集各种不同服务的运行状态。Node Exporter顾名思义，主要用于采集底层服务器的各种运行参数。</p>
-<p>目前Node Exporter支持几乎所有常见的监控点，比如conntrack，cpu，diskstats，filesystem，loadavg，meminfo，netstat等。<br>具体见如下：<br>名称 | 说明 | 系统<br>-|-|-<br>arp | 从 /proc/net/arp 中收集 ARP 统计信息 | Linux</p>
+<p>目前Node Exporter支持几乎所有常见的监控点，比如conntrack，cpu，diskstats，filesystem，loadavg，meminfo，netstat等。<br>具体见如下：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+<th>系统</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>arp</td>
+<td>从 /proc/net/arp 中收集 ARP 统计信息</td>
+<td>Linux</td>
+</tr>
+</tbody>
+</table>
 <h2 id="运行Node-exporter"><a href="#运行Node-exporter" class="headerlink" title="运行Node_exporter"></a>运行Node_exporter</h2><h3 id="启动Docker"><a href="#启动Docker" class="headerlink" title="启动Docker"></a>启动Docker</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">-p $(ip addr | grep eth0 | grep inet |awk &apos;&#123;print $2&#125;&apos; | cut -d / -f 1):9100:9100 \</span><br><span class="line">--name &quot;node-exporter&quot; \</span><br><span class="line">--net=&quot;host&quot; \</span><br><span class="line">--pid=&quot;host&quot; \</span><br><span class="line">quay.io/prometheus/node-exporter</span><br></pre></td></tr></table></figure>
 <h3 id="访问页面"><a href="#访问页面" class="headerlink" title="访问页面"></a>访问页面</h3><p>IP:9100<br><img src="/images/prometheus/node_exporter_page.png" alt="node_exporter界面"></p>
 <h3 id="修改Prometheus-yml"><a href="#修改Prometheus-yml" class="headerlink" title="修改Prometheus.yml"></a>修改Prometheus.yml</h3><p>新增如下内容<br><div class="tabs" id><ul class="nav-tabs"><li class="tab active"><a href="#-1">/data/prometheus/etc/prometheus.yml</a></li></ul><div class="tab-content"><div class="tab-pane active" id="-1"><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- job_name: linux</span><br><span class="line">  static_configs:</span><br><span class="line">    - targets: [&apos;192.168.200.151:9100&apos;]</span><br><span class="line">      labels:</span><br><span class="line">        instance: node-01</span><br><span class="line">        group: inner</span><br><span class="line">    - targets: [&apos;192.168.200.152:9100&apos;]</span><br><span class="line">      labels:</span><br><span class="line">        instance: node-02</span><br><span class="line">        group: inner</span><br></pre></td></tr></table></figure></div></div></div><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">修改之后reload普罗米修斯</span><br><span class="line">curl -X POST http://localhost:9090/-/reload</span><br></pre></td></tr></table></figure></p>
