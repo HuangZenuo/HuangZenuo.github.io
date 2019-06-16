@@ -103,17 +103,19 @@
 
 
 
-  <meta name="description" content="Docker是什么？Docker是一个虚拟环境容器，可以将你的开发环境、代码、配置文件等一并打包到这个容器中，并发布和应用到任意平台中。比如，你在本地用Python开发网站后台，开发测试完成后，就可以将Python3及其依赖包、Flask及其各种插件、Mysql、Nginx等打包到一个容器中，然后部署到任意你想部署到的环境。 Docker解决了什么问题？软件开发最大的麻烦事之一，就是环境配置。用户">
+  <meta name="description" content="Docker介绍信息化，一个不可逆转的潮流，潮流之下，发展是一个亘古不变的话题。 IT 界同样如此，半年一浪，三载一潮，技术的迭代之快令人咂舌。从Hadoop，到OpenStack，到如今之Docker，无一不是一浪高过一浪。说到发展，谈及热度，目前容器领域的新技术 Docker，绝对是受到 IT 界前所未有的关注，因此也时常有人调侃：出门不知 Docker，实乃 IT 从业人员难以启齿的隐痛。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker基础">
 <meta property="og:url" content="https://ccnuo.com/2019/02/11/Docker基础/index.html">
 <meta property="og:site_name" content="Gino&#39;s Blog">
-<meta property="og:description" content="Docker是什么？Docker是一个虚拟环境容器，可以将你的开发环境、代码、配置文件等一并打包到这个容器中，并发布和应用到任意平台中。比如，你在本地用Python开发网站后台，开发测试完成后，就可以将Python3及其依赖包、Flask及其各种插件、Mysql、Nginx等打包到一个容器中，然后部署到任意你想部署到的环境。 Docker解决了什么问题？软件开发最大的麻烦事之一，就是环境配置。用户">
+<meta property="og:description" content="Docker介绍信息化，一个不可逆转的潮流，潮流之下，发展是一个亘古不变的话题。 IT 界同样如此，半年一浪，三载一潮，技术的迭代之快令人咂舌。从Hadoop，到OpenStack，到如今之Docker，无一不是一浪高过一浪。说到发展，谈及热度，目前容器领域的新技术 Docker，绝对是受到 IT 界前所未有的关注，因此也时常有人调侃：出门不知 Docker，实乃 IT 从业人员难以启齿的隐痛。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-16T13:19:35.526Z">
+<meta property="og:image" content="https://ccnuo.com/images/docker/docker.png">
+<meta property="og:updated_time" content="2019-06-16T14:14:35.200Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker基础">
-<meta name="twitter:description" content="Docker是什么？Docker是一个虚拟环境容器，可以将你的开发环境、代码、配置文件等一并打包到这个容器中，并发布和应用到任意平台中。比如，你在本地用Python开发网站后台，开发测试完成后，就可以将Python3及其依赖包、Flask及其各种插件、Mysql、Nginx等打包到一个容器中，然后部署到任意你想部署到的环境。 Docker解决了什么问题？软件开发最大的麻烦事之一，就是环境配置。用户">
+<meta name="twitter:description" content="Docker介绍信息化，一个不可逆转的潮流，潮流之下，发展是一个亘古不变的话题。 IT 界同样如此，半年一浪，三载一潮，技术的迭代之快令人咂舌。从Hadoop，到OpenStack，到如今之Docker，无一不是一浪高过一浪。说到发展，谈及热度，目前容器领域的新技术 Docker，绝对是受到 IT 界前所未有的关注，因此也时常有人调侃：出门不知 Docker，实乃 IT 从业人员难以启齿的隐痛。">
+<meta name="twitter:image" content="https://ccnuo.com/images/docker/docker.png">
 
 
 
@@ -401,7 +403,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-16 21:19:35" itemprop="dateModified" datetime="2019-06-16T21:19:35+08:00">2019-06-16</time>
+                <time title="修改时间：2019-06-16 22:14:35" itemprop="dateModified" datetime="2019-06-16T22:14:35+08:00">2019-06-16</time>
               
             
           </span>
@@ -447,7 +449,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4k</span>
+                <span title="本文字数">4.3k</span>
               
 
               
@@ -481,11 +483,15 @@
       
 
       
-        <h2 id="Docker是什么？"><a href="#Docker是什么？" class="headerlink" title="Docker是什么？"></a>Docker是什么？</h2><p>Docker是一个虚拟环境容器，可以将你的开发环境、代码、配置文件等一并打包到这个容器中，并发布和应用到任意平台中。比如，你在本地用Python开发网站后台，开发测试完成后，就可以将Python3及其依赖包、Flask及其各种插件、Mysql、Nginx等打包到一个容器中，然后部署到任意你想部署到的环境。</p>
+        <p><img src="/images/docker/docker.png" alt="Docker"></p>
+<h2 id="Docker介绍"><a href="#Docker介绍" class="headerlink" title="Docker介绍"></a>Docker介绍</h2><p>信息化，一个不可逆转的潮流，潮流之下，发展是一个亘古不变的话题。</p>
+<p>IT 界同样如此，半年一浪，三载一潮，技术的迭代之快令人咂舌。从Hadoop，到OpenStack，到如今之Docker，无一不是一浪高过一浪。说到发展，谈及热度，目前容器领域的新技术 Docker，绝对是受到 IT 界前所未有的关注，因此也时常有人调侃：出门不知 Docker，实乃 IT 从业人员难以启齿的隐痛。</p>
+<p>从狭义而言，Docker 是一款轻量级容器的管理引擎软件。云计算时代，可以帮助用户轻松实现分布式应用的“Build, Ship, Run”，也就是我们所说的，一次构建，到处运行。</p>
+<p>广义而言，Docker 是一家以容器服务为基础的硅谷公司，试图改变传统应用的构建与交付方式，创造应用模式的新时代。目前，从市场发展与技术影响而言，Docker 凸显了极大的潜力。</p>
 <h2 id="Docker解决了什么问题？"><a href="#Docker解决了什么问题？" class="headerlink" title="Docker解决了什么问题？"></a>Docker解决了什么问题？</h2><p>软件开发最大的麻烦事之一，就是环境配置。用户计算机的环境都不相同，你怎么知道自家的软件，能在那些机器跑起来？</p>
 <p>用户必须保证两件事：操作系统的设置，各种库和组件的安装。只有它们都正确，软件才能运行。举例来说，安装一个 Python 应用，计算机必须有 Python 引擎，还必须有各种依赖，可能还要配置环境变量。</p>
 <p>如果某些老旧的模块与当前环境不兼容，那就麻烦了。开发者常常会说：”它在我的机器可以跑了”（It works on my machine），言下之意就是，其他机器很可能跑不了。</p>
-<p>环境配置如此麻烦，换一台机器，就要重来一次，旷日费时。很多人想到，能不能从根本上解决问题，软件可以带环境安装？也就是说，安装的时候，把原始环境一模一样地复制过来。</p>
+<p>环境配置如此麻烦，换一台机器，就要重来一次，旷日费时。很多人想到，能不能从根本上解决问题，软件可以带环境安装？能不能在安装的时候，把原始环境一模一样地复制过来？答案是可以，docker完美的解决了这个问题。你在本地用Python开发网站后台，开发测试完成后，就可以将Python3及其依赖包、Flask及其各种插件、Mysql、Nginx等打包到一个容器中，然后部署到任意你想部署到的环境。</p>
 <h2 id="它和虚拟机有什么区别？"><a href="#它和虚拟机有什么区别？" class="headerlink" title="它和虚拟机有什么区别？"></a>它和虚拟机有什么区别？</h2><h3 id="资源占用"><a href="#资源占用" class="headerlink" title="资源占用"></a>资源占用</h3><p>虚拟机会独占一部分内存和硬盘空间。它运行的时候，其他程序就不能使用这些资源了。哪怕虚拟机里面的应用程序，真正使用的内存只有 1MB，虚拟机依然需要几百 MB 的内存才能运行。</p>
 <p>容器只占用需要的资源，不占用那些没有用到的资源；虚拟机由于是完整的操作系统，不可避免要占用所有资源。另外，多个容器可以共享资源，虚拟机都是独享资源。</p>
 <h3 id="启动速度"><a href="#启动速度" class="headerlink" title="启动速度"></a>启动速度</h3><p>启动操作系统需要多久，启动虚拟机就需要多久。可能要等几分钟，应用程序才能真正运行。</p>
@@ -512,7 +518,6 @@
 <h3 id="启动脚本"><a href="#启动脚本" class="headerlink" title="启动脚本"></a>启动脚本</h3><div class="tabs" id><ul class="nav-tabs"><li class="tab active"><a href="#-1">/usr/lib/systemd/system/docker.service</a></li></ul><div class="tab-content"><div class="tab-pane active" id="-1"><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Docker Application Container Engine</span><br><span class="line">Documentation=<a href="https://docs.docker.com" target="_blank" rel="noopener">https://docs.docker.com</a></span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=notify</span><br><span class="line"># the default is not to use systemd for cgroups because the delegate issues still</span><br><span class="line"># exists and systemd currently does not support the cgroup feature set required</span><br><span class="line"># for containers run by docker</span><br><span class="line">ExecStart=/usr/bin/dockerd</span><br><span class="line">ExecReload=/bin/kill -s HUP $MAINPID</span><br><span class="line"># Having non-zero Limit*s causes performance problems due to accounting overhead</span><br><span class="line"># in the kernel. We recommend using cgroups to do container-local accounting.</span><br><span class="line">LimitNOFILE=infinity</span><br><span class="line">LimitNPROC=infinity</span><br><span class="line">LimitCORE=infinity</span><br><span class="line"># Uncomment TasksMax if your systemd version supports it.</span><br><span class="line"># Only systemd 226 and above support this version.</span><br><span class="line">#TasksMax=infinity</span><br><span class="line">TimeoutStartSec=0</span><br><span class="line"># set delegate yes so that systemd does not reset the cgroups of docker containers</span><br><span class="line">Delegate=yes</span><br><span class="line"># kill only the docker process, not all processes in the cgroup</span><br><span class="line">KillMode=process</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure></div></div></div>
 <h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># systemctl enable docker.service</span><br><span class="line"># systemctl start docker.service</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># docker info</span><br></pre></td></tr></table></figure>
-
       
     </div>
 
@@ -711,7 +716,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker是什么？"><span class="nav-number">1.</span> <span class="nav-text">Docker是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker解决了什么问题？"><span class="nav-number">2.</span> <span class="nav-text">Docker解决了什么问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#它和虚拟机有什么区别？"><span class="nav-number">3.</span> <span class="nav-text">它和虚拟机有什么区别？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#资源占用"><span class="nav-number">3.1.</span> <span class="nav-text">资源占用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动速度"><span class="nav-number">3.2.</span> <span class="nav-text">启动速度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#体积"><span class="nav-number">3.3.</span> <span class="nav-text">体积</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker的三个概念"><span class="nav-number">4.</span> <span class="nav-text">Docker的三个概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#镜像（Image）"><span class="nav-number">4.1.</span> <span class="nav-text">镜像（Image）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#容器（Container）"><span class="nav-number">4.2.</span> <span class="nav-text">容器（Container）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仓库（Repository）"><span class="nav-number">4.3.</span> <span class="nav-text">仓库（Repository）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-的用途"><span class="nav-number">5.</span> <span class="nav-text">Docker 的用途</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Docker"><span class="nav-number">6.</span> <span class="nav-text">安装Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">6.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置"><span class="nav-number">6.2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动脚本"><span class="nav-number">6.3.</span> <span class="nav-text">启动脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动"><span class="nav-number">6.4.</span> <span class="nav-text">启动</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker介绍"><span class="nav-number">1.</span> <span class="nav-text">Docker介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker解决了什么问题？"><span class="nav-number">2.</span> <span class="nav-text">Docker解决了什么问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#它和虚拟机有什么区别？"><span class="nav-number">3.</span> <span class="nav-text">它和虚拟机有什么区别？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#资源占用"><span class="nav-number">3.1.</span> <span class="nav-text">资源占用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动速度"><span class="nav-number">3.2.</span> <span class="nav-text">启动速度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#体积"><span class="nav-number">3.3.</span> <span class="nav-text">体积</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker的三个概念"><span class="nav-number">4.</span> <span class="nav-text">Docker的三个概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#镜像（Image）"><span class="nav-number">4.1.</span> <span class="nav-text">镜像（Image）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#容器（Container）"><span class="nav-number">4.2.</span> <span class="nav-text">容器（Container）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仓库（Repository）"><span class="nav-number">4.3.</span> <span class="nav-text">仓库（Repository）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-的用途"><span class="nav-number">5.</span> <span class="nav-text">Docker 的用途</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Docker"><span class="nav-number">6.</span> <span class="nav-text">安装Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">6.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置"><span class="nav-number">6.2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动脚本"><span class="nav-number">6.3.</span> <span class="nav-text">启动脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动"><span class="nav-number">6.4.</span> <span class="nav-text">启动</span></a></li></ol></li></ol></div>
             
 
           </div>
