@@ -103,18 +103,18 @@
 
 
 
-  <meta name="description" content="Docker是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的Linux/Windows/Mac机器上。容器镜像正成为一个新的标准化软件交付方式。例如，可以通过以下命令快速在本地启动一个Nginx服务：run -itd nginx```1为了能够获取到Docker容器的运行状态，用户可以通过Docker的stats命令获取到当前主机上运行容器的">
+  <meta name="description" content="Docker是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的Linux/Windows/Mac机器上。容器镜像正成为一个新的标准化软件交付方式。例如，可以通过以下命令快速在本地启动一个Nginx服务：docker run -itd nginx为了能够获取到Docker容器的运行状态，用户可以通过Docker的stats命令获取到当前主机上运行">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Prometheus之 容器监控：cAdvisor（三）">
 <meta property="og:url" content="https://ccnuo.com/2019/03/01/Prometheus之 容器监控：cAdvisor（三）/index.html">
 <meta property="og:site_name" content="Gino&#39;s Blog">
-<meta property="og:description" content="Docker是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的Linux/Windows/Mac机器上。容器镜像正成为一个新的标准化软件交付方式。例如，可以通过以下命令快速在本地启动一个Nginx服务：run -itd nginx```1为了能够获取到Docker容器的运行状态，用户可以通过Docker的stats命令获取到当前主机上运行容器的">
+<meta property="og:description" content="Docker是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的Linux/Windows/Mac机器上。容器镜像正成为一个新的标准化软件交付方式。例如，可以通过以下命令快速在本地启动一个Nginx服务：docker run -itd nginx为了能够获取到Docker容器的运行状态，用户可以通过Docker的stats命令获取到当前主机上运行">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://ccnuo.com/images/prometheus/cadvisor.png">
-<meta property="og:updated_time" content="2019-09-09T08:24:45.591Z">
+<meta property="og:updated_time" content="2019-09-09T09:17:30.883Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Prometheus之 容器监控：cAdvisor（三）">
-<meta name="twitter:description" content="Docker是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的Linux/Windows/Mac机器上。容器镜像正成为一个新的标准化软件交付方式。例如，可以通过以下命令快速在本地启动一个Nginx服务：run -itd nginx```1为了能够获取到Docker容器的运行状态，用户可以通过Docker的stats命令获取到当前主机上运行容器的">
+<meta name="twitter:description" content="Docker是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的Linux/Windows/Mac机器上。容器镜像正成为一个新的标准化软件交付方式。例如，可以通过以下命令快速在本地启动一个Nginx服务：docker run -itd nginx为了能够获取到Docker容器的运行状态，用户可以通过Docker的stats命令获取到当前主机上运行">
 <meta name="twitter:image" content="https://ccnuo.com/images/prometheus/cadvisor.png">
 
 
@@ -403,7 +403,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-09-09 16:24:45" itemprop="dateModified" datetime="2019-09-09T16:24:45+08:00">2019-09-09</time>
+                <time title="修改时间：2019-09-09 17:17:30" itemprop="dateModified" datetime="2019-09-09T17:17:30+08:00">2019-09-09</time>
               
             
           </span>
@@ -449,7 +449,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">913</span>
+                <span title="本文字数">929</span>
               
 
               
@@ -483,9 +483,11 @@
       
 
       
-        <p>Docker是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的Linux/Windows/Mac机器上。容器镜像正成为一个新的标准化软件交付方式。<br>例如，可以通过以下命令快速在本地启动一个Nginx服务：<br><figure class="highlight docker"><figcaption><span>run -itd nginx```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">为了能够获取到Docker容器的运行状态，用户可以通过Docker的stats命令获取到当前主机上运行容器的统计信息，可以查看容器的CPU利用率、内存使用量、网络IO总量以及磁盘IO总量等信息。</span><br></pre></td></tr></table></figure></p>
-<p>$ docker stats<br>CONTAINER           CPU %               MEM USAGE / LIMIT     MEM %               NET I/O             BLOCK I/O           PIDS<br>9a1648bec3b2        0.30%               196KiB / 3.855GiB     0.00%               828B / 0B           827kB / 0B          1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 使用CAdvisor</span><br><span class="line">CAdvisor是Google开源的一款用于展示和分析容器运行状态的可视化工具。通过在主机上运行CAdvisor用户可以轻松的获取到当前主机上容器的运行统计信息，并以图表的形式向用户展示。</span><br><span class="line">在本地运行CAdvisor也非常简单，直接运行以下命令即可：</span><br></pre></td></tr></table></figure></p>
-<p>docker run \<br>  –volume=/:/rootfs:ro \<br>  –volume=/var/run:/var/run:rw \<br>  –volume=/sys:/sys:ro \<br>  –volume=/var/lib/docker/:/var/lib/docker:ro \<br>  –publish=8080:8080 \<br>  –detach=true \<br>  –name=cadvisor \<br>  google/cadvisor:v0.33.0<br><code>`</code><br>通过访问<a href="http://IP:8080可以查看，当前主机上容器的运行状态，如下所示：" target="_blank" rel="noopener">http://IP:8080可以查看，当前主机上容器的运行状态，如下所示：</a></p>
+        <p>Docker是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的Linux/Windows/Mac机器上。容器镜像正成为一个新的标准化软件交付方式。<br>例如，可以通过以下命令快速在本地启动一个Nginx服务：<br><code>docker run -itd nginx</code><br>为了能够获取到Docker容器的运行状态，用户可以通过Docker的stats命令获取到当前主机上运行容器的统计信息，可以查看容器的CPU利用率、内存使用量、网络IO总量以及磁盘IO总量等信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker stats</span><br><span class="line">CONTAINER           CPU %               MEM USAGE / LIMIT     MEM %               NET I/O             BLOCK I/O           PIDS</span><br><span class="line">9a1648bec3b2        0.30%               196KiB / 3.855GiB     0.00%               828B / 0B           827kB / 0B          1</span><br></pre></td></tr></table></figure>
+<h2 id="使用CAdvisor"><a href="#使用CAdvisor" class="headerlink" title="使用CAdvisor"></a>使用CAdvisor</h2><p>CAdvisor是Google开源的一款用于展示和分析容器运行状态的可视化工具。通过在主机上运行CAdvisor用户可以轻松的获取到当前主机上容器的运行统计信息，并以图表的形式向用户展示。<br>在本地运行CAdvisor也非常简单，直接运行以下命令即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run \</span><br><span class="line">  --volume=/:/rootfs:ro \</span><br><span class="line">  --volume=/var/run:/var/run:rw \</span><br><span class="line">  --volume=/sys:/sys:ro \</span><br><span class="line">  --volume=/var/lib/docker/:/var/lib/docker:ro \</span><br><span class="line">  --publish=8080:8080 \</span><br><span class="line">  --detach=true \</span><br><span class="line">  --name=cadvisor \</span><br><span class="line">  google/cadvisor:v0.33.0</span><br></pre></td></tr></table></figure>
+<p>通过访问<a href="http://IP:8080可以查看，当前主机上容器的运行状态，如下所示：" target="_blank" rel="noopener">http://IP:8080可以查看，当前主机上容器的运行状态，如下所示：</a></p>
 <p><img src="/images/prometheus/cadvisor.png" alt="upload successful"></p>
 
       
@@ -574,8 +576,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -666,6 +677,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用CAdvisor"><span class="nav-number">1.</span> <span class="nav-text">使用CAdvisor</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
